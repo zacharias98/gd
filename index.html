@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurum Hospitality — Refined Luxury Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── TOKENS ──────────────────────────────────────────── */
+  :root {
+    --paper:    #F4F3F0;
+    --porcelain:#ECEAE5;
+    --linen:    #E2DFD8;
+    --slate:    #2B3A4A;
+    --slate-md: #3E5468;
+    --steel:    #4A6FA5;
+    --steel-lt: #6B8DC4;
+    --platinum: #B8BFC8;
+    --smoke:    #8A9099;
+    --ink:      #1A2430;
+    --white:    #FAFAF8;
+    --serif:    'Cormorant Garamond', Georgia, serif;
+    --sans:     'DM Sans', sans-serif;
+    --ease:     cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  /* ─── RESET & BASE ────────────────────────────────────── */
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--slate);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+    /* cursor: none; */
+  }
+  ::selection { background: var(--steel); color: var(--white); }
+
+  /* ─── CUSTOM CURSOR ───────────────────────────────────── */
+  /* .cursor-dot {
+    width: 6px; height: 6px;
+    background: var(--steel);
+    border-radius: 50%;
+    position: fixed; top:0; left:0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%,-50%);
+    transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(74,111,165,0.4);
+    border-radius: 50%;
+    position: fixed; top:0; left:0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: width 0.35s var(--ease), height 0.35s var(--ease), opacity 0.3s;
+  }
+  .cursor-dot.hover  { width: 10px; height: 10px; background: var(--steel-lt); }
+  .cursor-ring.hover { width: 58px; height: 58px; opacity: 0.5; } */
+
+  /* ─── FINE GRAIN TEXTURE ──────────────────────────────── */
+  body::before {
+    content:'';
+    position: fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9997;
+  }
+
+  /* ─── SCROLLBAR ───────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--linen); }
+  ::-webkit-scrollbar-thumb { background: var(--steel); border-radius: 2px; }
+
+  /* ─── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed; top:0; left:0; right:0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 2rem 4rem;
+    transition: background 0.5s var(--ease), padding 0.4s var(--ease), box-shadow 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(244,243,240,0.94);
+    backdrop-filter: blur(20px);
+    padding: 1.2rem 4rem;
+    box-shadow: 0 1px 0 rgba(43,58,74,0.08);
+  }
+  nav.scrolled .nav-links a {
+    color: var(--smoke);
+  }
+  nav.scrolled .nav-cta {
+    color: var(--steel) !important;
+    border-color: var(--steel) !important;
+  }
+  nav.scrolled .nav-cta:hover { background: var(--steel) !important; color: var(--white) !important; }
+  .nav-logo {
+    display: flex; align-items: baseline; gap: 0.6rem;
+    text-decoration: none;
+  }
+  .nav-logo-word {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--slate);
+    letter-spacing: 0.14em;
+  }
+  .nav-logo-mark {
+    font-size: 0.52rem;
+    letter-spacing: 0.32em;
+    color: var(--steel);
+    text-transform: uppercase;
+    font-weight: 500;
+    align-self: center;
+  }
+  .nav-links {
+    display: flex; gap: 3rem; list-style: none;
+  }
+  .nav-links a {
+    /* color: var(--smoke); */
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content:'';
+    position: absolute; bottom:-4px; left:0;
+    width:0; height:1px;
+    background: var(--steel);
+    transition: width 0.4s var(--ease);
+  }
+  .nav-links a:hover { color: var(--slate); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.22em !important;
+    /* color: var(--steel) !important; */
+    color: var(--paper) !important;
+    /* border: 1px solid rgba(74,111,165,0.35) !important; */
+    border: 1px solid var(--paper) !important;
+    padding: 0.6rem 1.4rem;
+    transition: background 0.3s, color 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--steel) !important; color: var(--white) !important; }
+  .nav-cta::after { display:none !important; }
+
+  /* ─── HERO CAROUSEL ───────────────────────────────────── */
+  .hero-carousel {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .hero-carousel-track {
+    position: relative;
+    width: 100%; height: 100%;
+  }
+  .hero-carousel-slide {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .hero-carousel-slide.active {
+    opacity: 1;
+  }
+  /* Dark overlay on top of images for text contrast */
+  .hero-carousel-slide::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(26, 36, 48, 0.5);
+    z-index: 1;
+  }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 100vh; min-height: 700px;
+    display: flex; align-items: flex-end;
+    overflow: hidden;
+    /* background: var(--paper); */
+  }
+  /* Large editorial background numeral */
+  .hero-numeral {
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-60%);
+    font-family: var(--serif);
+    font-size: clamp(22rem, 32vw, 38rem);
+    font-weight: 300;
+    color: rgba(43,58,74,0.05);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+    padding-right: 35px;
+    z-index: 3;
+  }
+  /* Thin horizontal rule lines — editorial grid feel */
+  .hero-rule {
+    position: absolute;
+    left:0; right:0;
+    height: 1px;
+    background: rgba(43,58,74,0.06);
+    z-index: 3;
+  }
+  .hero-rule:nth-child(1){ top: 30%; }
+  .hero-rule:nth-child(2){ top: 60%; }
+  /* Vertical accent bar */
+  .hero-vbar {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 55%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent 10%, rgba(74,111,165,0.15) 40%, rgba(74,111,165,0.15) 70%, transparent 100%);
+    z-index: 3;
+  }
+  /* Animated circle deco */
+  .hero-circle {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 420px; height: 420px;
+    border: 1px solid rgba(74,111,165,0.1);
+    border-radius: 50%;
+    animation: spinSlow 60s linear infinite;
+    z-index: 3;
+  }
+  .hero-circle::before {
+    content:'';
+    position: absolute; inset: 50px;
+    border: 1px solid rgba(74,111,165,0.07);
+    border-radius: 50%;
+    animation: spinSlow 35s linear infinite reverse;
+  }
+  @keyframes spinSlow {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to   { transform: translateY(-50%) rotate(360deg); }
+  }
+  /* Small floating tag */
+  .hero-tag {
+    position: absolute;
+    right: 8%;
+    top: calc(50% - 250px);
+    transform: none;
+    display: flex; align-items: center; gap: 0.7rem;
+    opacity: 0;
+    animation: fadeIn 1s var(--ease) 1.2s forwards;
+    z-index: 3;
+  }
+  .hero-tag-dot { width:6px; height:6px; background:var(--steel); border-radius:50%; }
+  .hero-tag span {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+
+  .hero-content {
+    position: relative; z-index: 4;
+    padding: 0 4rem 8rem;
+    max-width: 860px;
+  }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.3s forwards;
+  }
+  .hero-eyebrow-line { width: 36px; height:1px; background: var(--steel); }
+  .hero-eyebrow span {
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--steel);
+    font-weight: 400;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(4rem, 7.5vw, 7.5rem);
+    font-weight: 300;
+    line-height: 0.95;
+    /* color: var(--ink); */
+    color: var(--platinum);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1.1s var(--ease) 0.5s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--steel);
+  }
+  .hero-desc {
+    font-size: 0.75rem;
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    /* color: var(--smoke); */
+    color: var(--paper);
+    max-width: 420px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1.1s var(--ease) 0.7s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 1.5rem; align-items: center;
+    opacity: 0;
+    animation: fadeUp 1.1s var(--ease) 0.9s forwards;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    background: var(--slate);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 1rem 2.4rem;
+    transition: background 0.3s, gap 0.3s;
+  }
+  .btn-primary:hover { background: var(--steel); gap: 1.2rem; }
+  .btn-primary svg { transition: transform 0.3s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    /* color: var(--slate); */
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(43,58,74,0.25);
+    padding-bottom: 0.2rem;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .btn-ghost:hover { color: var(--steel); border-color: var(--steel); }
+
+  /* scroll hint */
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 3rem; right: 4rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+    opacity: 0;
+    animation: fadeIn 1s var(--ease) 1.5s forwards;
+    z-index: 4;
+  }
+  .hero-scroll-hint span {
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--platinum);
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--steel), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100%{ transform: scaleY(1); opacity:1; }
+    50%{ transform: scaleY(0.6); opacity:0.4; }
+  }
+
+  /* stat strip */
+  .hero-stats {
+    position: absolute;
+    bottom: 0; left:0; right:0;
+    display: grid; grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid rgba(43,58,74,0.1);
+    background: rgba(244,243,240,0.7);
+    backdrop-filter: blur(10px);
+    z-index: 4;
+  }
+  .hero-stat {
+    padding: 1.4rem 2rem;
+    border-right: 1px solid rgba(43,58,74,0.1);
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease) forwards;
+  }
+  .hero-stat:nth-child(1){ animation-delay:1.1s; }
+  .hero-stat:nth-child(2){ animation-delay:1.25s; }
+  .hero-stat:nth-child(3){ animation-delay:1.4s; }
+  .hero-stat:nth-child(4){ animation-delay:1.55s; border-right:none; }
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--steel);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    margin-top: 0.3rem;
+  }
+
+  /* ─── REVEAL SYSTEM ───────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal.visible { opacity:1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.22s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.5s; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .section-label-line { width: 30px; height:1px; background: var(--steel); }
+  .section-label span {
+    font-size: 0.52rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--steel);
+    font-weight: 400;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 4.5vw, 4.6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--steel); }
+
+  /* ─── ABOUT ───────────────────────────────────────────── */
+  .about {
+    padding: 10rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+    background: var(--white);
+  }
+  .about-text p {
+    font-size: 0.74rem;
+    line-height: 2;
+    color: var(--smoke);
+    margin-top: 1.8rem;
+    max-width: 440px;
+  }
+  .about-visual {
+    position: relative;
+    display: flex; justify-content: center;
+  }
+  .about-frame {
+    width: 340px; height: 440px;
+    border: 1px solid rgba(43,58,74,0.12);
+    position: relative;
+    background: var(--porcelain);
+    overflow: hidden;
+  }
+  .about-frame-inner {
+    position: absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 35% 30%, rgba(74,111,165,0.09) 0%, transparent 55%),
+      linear-gradient(150deg, var(--linen) 0%, var(--porcelain) 100%);
+  }
+  .about-frame-inner::after {
+    content:'';
+    position: absolute; inset:0;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH5neiCCWJeR2uJXhzexO8nPrHI4JdgKih5A&s');
+    background-size: cover;
+    background-position: center;
+  }
+  .about-frame-tag {
+    position: absolute;
+    bottom: -1px; left: -1px;
+    background: var(--steel);
+    color: var(--white);
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+  }
+  .about-deco-num {
+    position: absolute;
+    right: -1.5rem; top: -2rem;
+    font-family: var(--serif);
+    font-size: 9rem;
+    font-weight: 300;
+    color: rgba(74,111,165,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ─── SERVICES ────────────────────────────────────────── */
+  .services {
+    padding: 10rem 4rem;
+    background: var(--paper);
+  }
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 6rem;
+  }
+  .services-header p {
+    font-size: 0.74rem;
+    line-height: 2;
+    color: var(--smoke);
+    padding-bottom: 0.3rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 0;
+    border: 1px solid rgba(43,58,74,0.1);
+    background: rgba(43,58,74,0.1);
+  }
+  .service-card {
+    padding: 3.5rem 3rem;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s var(--ease);
+  }
+  .service-card::before {
+    content:'';
+    position: absolute; inset:0;
+    background: radial-gradient(ellipse at 0% 0%, rgba(74,111,165,0.07) 0%, transparent 60%);
+    opacity:0;
+    transition: opacity 0.4s;
+  }
+  .service-card:hover { background: var(--white); }
+  .service-card:hover::before { opacity:1; }
+  /* top accent bar on hover */
+  .service-card::after {
+    content:'';
+    position: absolute; top:0; left:0; right:0;
+    height: 2px;
+    background: var(--steel);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease);
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(74,111,165,0.14);
+    line-height: 1;
+    margin-bottom: 2rem;
+    display: block;
+  }
+  .service-icon {
+    width: 42px; height: 42px;
+    margin-bottom: 1.5rem;
+    color: var(--steel);
+  }
+  .service-name {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .service-desc {
+    font-size: 0.67rem;
+    line-height: 1.9;
+    color: var(--smoke);
+    margin-bottom: 2rem;
+  }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.52rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--steel);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s, gap 0.3s;
+  }
+  .service-card:hover .service-link { opacity:1; transform: translateY(0); }
+  .service-link:hover { gap: 1rem; }
+
+  /* ─── MARQUEE ─────────────────────────────────────────── */
+  .marquee-section {
+    overflow: hidden;
+    padding: 1.8rem 0;
+    background: var(--slate);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 24s linear infinite;
+  }
+  .marquee-track span {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(244,243,240,0.75);
+    padding: 0 3rem;
+    white-space: nowrap;
+  }
+  .marquee-track span.sep {
+    font-style: normal;
+    color: var(--steel-lt);
+    padding: 0 1rem;
+    opacity: 0.6;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ─── PORTFOLIO ───────────────────────────────────────── */
+  .portfolio {
+    padding: 10rem 4rem;
+    background: var(--white);
+  }
+  .portfolio-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 5rem;
+  }
+  .portfolio-link {
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--steel);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(74,111,165,0.3);
+    padding-bottom: 0.2rem;
+    transition: border-color 0.3s;
+  }
+  .portfolio-link:hover { border-color: var(--steel); }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2px;
+    background: var(--linen);
+  }
+  .portfolio-item {
+    position: relative; overflow: hidden;
+    background: var(--porcelain);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s;
+  }
+  .portfolio-item:hover { opacity: 0.95; }
+  .portfolio-item:first-child { grid-row: span 2; min-height: 680px; }
+  .portfolio-item:not(:first-child) { min-height: 330px; }
+  .portfolio-item-bg {
+    position: absolute; inset:0;
+    transition: transform 0.7s var(--ease);
+  }
+  .portfolio-item:hover .portfolio-item-bg { transform: scale(1.04); }
+  /* Background images configured in HTML inline styles */
+  .portfolio-item-bg::after {
+    content:'';
+    position: absolute; inset:0;
+    background: linear-gradient(135deg, rgba(26,36,48,0.3) 0%, rgba(26,36,48,0.1) 100%);
+  }
+  .portfolio-item-overlay {
+    position: absolute; inset:0;
+    background: linear-gradient(to top, rgba(26,36,48,0.65) 0%, transparent 55%);
+  }
+  .portfolio-item-info {
+    position: absolute; bottom:0; left:0; right:0;
+    padding: 2.5rem;
+    transform: translateY(16px);
+    transition: transform 0.4s var(--ease);
+  }
+  .portfolio-item:hover .portfolio-item-info { transform: translateY(0); }
+  .portfolio-item-tag {
+    display: inline-block;
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+  .portfolio-item-name {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .portfolio-item:not(:first-child) .portfolio-item-name { font-size: 1.45rem; }
+  .portfolio-item-loc {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.55);
+    margin-top: 0.3rem;
+  }
+  /* Steel corner accent on hover */
+  .portfolio-item::before {
+    content:'';
+    position: absolute; top:0; left:0;
+    width: 0; height: 2px;
+    background: var(--steel-lt);
+    transition: width 0.5s var(--ease);
+    z-index: 2;
+  }
+  .portfolio-item:hover::before { width: 60px; }
+
+  /* ─── TESTIMONIAL ─────────────────────────────────────── */
+  .testimonial-section {
+    padding: 10rem 4rem;
+    background: var(--slate);
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonial-section::before {
+    content: '"';
+    position: absolute; top: 2rem; left: 2rem;
+    font-family: var(--serif);
+    font-size: 28rem;
+    color: rgba(74,111,165,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .testimonial-inner {
+    max-width: 860px; margin: 0 auto;
+    text-align: center; position: relative; z-index:1;
+  }
+  .testimonial-section .section-label { justify-content: center; }
+  .testimonial-section .section-label-line { background: var(--steel-lt); }
+  .testimonial-section .section-label span { color: var(--steel-lt); }
+  .testimonial-text {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 3vw, 3rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.55;
+    color: rgba(244,243,240,0.9);
+    margin-bottom: 3rem;
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .testimonial-text em { color: var(--steel-lt); font-style: normal; }
+  .testimonial-divider { width: 36px; height:1px; background: var(--steel-lt); margin: 0 auto 1.5rem; }
+  .testimonial-author {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--platinum);
+  }
+  .testimonial-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 3rem; }
+  .testimonial-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(184,191,200,0.3);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .testimonial-dot.active { background: var(--steel-lt); transform: scale(1.4); }
+
+  /* ─── PROCESS ─────────────────────────────────────────── */
+  .process {
+    padding: 10rem 4rem;
+    background: var(--porcelain);
+  }
+  .process-header { margin-bottom: 6rem; }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    position: relative;
+  }
+  .process-steps::before {
+    content:'';
+    position: absolute;
+    top: 22px; left: 22px; right: 22px;
+    height: 1px;
+    background: linear-gradient(to right, var(--steel), rgba(74,111,165,0.15));
+    z-index: 0;
+  }
+  .process-step {
+    position: relative; z-index:1;
+    padding: 0 2.5rem 0 0;
+    padding-top: 4.5rem;
+  }
+  .process-step::before {
+    content: attr(data-num);
+    position: absolute; top:0; left:0;
+    width: 44px; height: 44px;
+    background: var(--steel);
+    color: var(--white);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+  }
+  .process-step-name {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .process-step-desc {
+    font-size: 0.64rem;
+    line-height: 1.9;
+    color: var(--smoke);
+  }
+
+  /* ─── CTA / CONTACT ───────────────────────────────────── */
+  .cta-section {
+    padding: 10rem 4rem;
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Faint circle deco */
+  .cta-section::before {
+    content:'';
+    position: absolute; right:-8%; top:50%;
+    transform: translateY(-50%);
+    width: 580px; height: 580px;
+    border: 1px solid rgba(74,111,165,0.07);
+    border-radius: 50%;
+    pointer-events:none;
+  }
+  .cta-section::after {
+    content:'';
+    position: absolute; right:4%; top:50%;
+    transform: translateY(-50%);
+    width: 360px; height: 360px;
+    border: 1px solid rgba(74,111,165,0.1);
+    border-radius: 50%;
+    pointer-events:none;
+  }
+  .cta-text-block { position:relative; z-index:1; }
+  .cta-text-block p {
+    font-size: 0.74rem;
+    line-height: 2;
+    color: var(--smoke);
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .cta-form-block { position:relative; z-index:1; }
+  .form-row { margin-bottom: 1.1rem; }
+  .form-row label {
+    display: block;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    margin-bottom: 0.45rem;
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid rgba(43,58,74,0.15);
+    color: var(--slate);
+    font-family: var(--sans);
+    font-size: 0.74rem;
+    font-weight: 300;
+    padding: 0.85rem 1.1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* cursor: none; */
+    appearance: none;
+  }
+  .form-row input::placeholder,
+  .form-row textarea::placeholder { color: var(--platinum); }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus {
+    border-color: var(--steel);
+    box-shadow: 0 0 0 3px rgba(74,111,165,0.08);
+  }
+  .form-row textarea { resize:none; height:88px; }
+  .form-row select option { background: var(--white); color: var(--slate); }
+  .form-submit {
+    width: 100%;
+    background: var(--slate);
+    color: var(--white);
+    border: none;
+    font-family: var(--sans);
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 1.1rem;
+    /* cursor: none; */
+    transition: background 0.3s;
+    margin-top: 0.4rem;
+  }
+  .form-submit:hover { background: var(--steel); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    background: var(--ink);
+    padding: 5rem 4rem 3rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(184,191,200,0.1);
+    margin-bottom: 2.5rem;
+  }
+  .footer-logo-word {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--paper);
+    letter-spacing: 0.14em;
+  }
+  .footer-logo-mark {
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    color: var(--steel-lt);
+    text-transform: uppercase;
+    font-weight: 400;
+    display: block;
+    margin-top: 0.2rem;
+  }
+  .footer-brand-desc {
+    font-size: 0.66rem;
+    line-height: 2;
+    color: rgba(184,191,200,0.6);
+    margin-top: 1.2rem;
+    max-width: 270px;
+  }
+  .footer-col h4 {
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--steel-lt);
+    font-weight: 400;
+    margin-bottom: 1.4rem;
+  }
+  .footer-col ul { list-style:none; }
+  .footer-col ul li { margin-bottom: 0.75rem; }
+  .footer-col ul a {
+    font-size: 0.65rem;
+    color: rgba(184,191,200,0.55);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-col ul a:hover { color: var(--paper); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy {
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    color: rgba(184,191,200,0.35);
+  }
+  .footer-socials { display: flex; gap: 1.2rem; }
+  .footer-socials a {
+    width: 34px; height: 34px;
+    border: 1px solid rgba(184,191,200,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(184,191,200,0.5);
+    text-decoration: none;
+    font-size: 0.65rem;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .footer-socials a:hover { border-color: var(--steel-lt); color: var(--steel-lt); }
+
+  /* ─── KEYFRAMES ───────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(28px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity:0; } to { opacity:1; }
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1.5rem 2rem; }
+    nav.scrolled { padding: 1rem 2rem; }
+    .nav-links { display:none; }
+    .hero-content { padding: 0 2rem 8rem; }
+    .hero-numeral { display:none; }
+    .hero-stats { grid-template-columns: repeat(2,1fr); }
+    .hero-scroll-hint { display:none; }
+    .about, .services-header, .cta-section { grid-template-columns:1fr; gap:3rem; }
+    .about { padding:5rem 2rem; }
+    .services { padding:5rem 2rem; }
+    .services-grid { grid-template-columns:1fr; }
+    .portfolio { padding:5rem 2rem; }
+    .portfolio-grid { grid-template-columns:1fr; }
+    .portfolio-item:first-child { min-height:400px; }
+    .testimonial-section { padding:6rem 2rem; }
+    .process { padding:6rem 2rem; }
+    .process-steps { grid-template-columns:1fr 1fr; gap:3rem; }
+    .process-steps::before { display:none; }
+    .cta-section { padding:6rem 2rem; }
+    footer { padding:4rem 2rem 2rem; }
+    .footer-top { grid-template-columns:1fr 1fr; gap:3rem; }
+    /* .cursor-dot, .cursor-ring { display:none; } */
+    body { cursor:default; }
+    * { cursor:default !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- <div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div> -->
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-word">GD</span>
+    <span class="nav-logo-mark">Signature Hospitality</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Inquire</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <!-- Carousel Background -->
+  <div class="hero-carousel">
+    <div class="hero-carousel-track">
+      <div class="hero-carousel-slide active" style="background-image: url('https://cdn.confident-group.com/wp-content/uploads/2025/01/09175702/villa-cover.jpg');"></div>
+      <div class="hero-carousel-slide" style="background-image: url('https://www.thehotel.gr/files/527/exterior-pool-1new.jpg');"></div>
+      <div class="hero-carousel-slide" style="background-image: url('https://holiwaysvillas.com/wp-content/uploads/2024/06/1-137-scaled.jpg');"></div>
+    </div>
+  </div>
+  
+  <div class="hero-rule"></div>
+  <div class="hero-rule"></div>
+  <div class="hero-vbar"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-numeral">GD</div>
+  <div class="hero-tag">
+    <!-- <div class="hero-tag-dot"></div> -->
+    <!-- <span>Est. 2000 · Monaco</span> -->
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <!-- <div class="hero-eyebrow-line"></div> -->
+      <!-- <span>Luxury Hospitality Management</span> -->
+    </div>
+    <h1 class="hero-title">Where <em>Excellence</em><br>Becomes<br>a Standard</h1>
+    <p class="hero-desc">We partner with the world's finest hotels, resorts, and private estates to deliver uncompromising operational mastery — elevating every guest experience to an art form.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        Explore Our Work
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#contact" class="btn-ghost">Request Consultation</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">147</div><div class="hero-stat-label">Properties Managed</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">38</div><div class="hero-stat-label">Countries Worldwide</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">96%</div><div class="hero-stat-label">Guest Satisfaction</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">25+</div><div class="hero-stat-label">Years of Mastery</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <div class="section-label reveal"><div class="section-label-line"></div><span>Who we are</span></div>
+    <h2 class="section-title reveal reveal-delay-1">Crafting Legacies,<br><em>Not Just Stays</em></h2>
+    <p class="reveal reveal-delay-2">Aurum Hospitality Group was founded on a singular conviction: that true luxury is not defined by thread counts or star ratings, but by the invisible architecture of feeling — the warmth in a greeting, the silence between moments, the quiet certainty that every detail has been considered.</p>
+    <p class="reveal reveal-delay-3" style="margin-top:1rem;">We work with visionary owners and operators to transform properties into destinations — places that guests return to not out of habit, but out of longing.</p>
+  </div>
+  <div class="about-visual reveal reveal-delay-2">
+    <div class="about-frame">
+      <div class="about-frame-inner"></div>
+      <!-- <div class="about-frame-tag">Est. 2000 — Monaco</div> -->
+    </div>
+    <div class="about-deco-num">A</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-label reveal"><div class="section-label-line"></div><span>What We Do</span></div>
+      <h2 class="section-title reveal reveal-delay-1">Full-Spectrum<br><em>Hospitality</em><br>Expertise</h2>
+    </div>
+    <p class="reveal reveal-delay-2">From pre-opening strategy to daily operations refinement, we offer an integrated suite of management services tailored to the unique DNA of each property we steward.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-num">01</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="6" y="14" width="32" height="22" rx="1"/><path d="M14 14V10a8 8 0 0116 0v4"/>
+        <circle cx="22" cy="25" r="3"/><path d="M22 28v4"/>
+      </svg>
+      <div class="service-name">Hotel Operations Management</div>
+      <p class="service-desc">Comprehensive oversight of daily hotel operations — from front office excellence and housekeeping standards to F&B management and engineering maintenance.</p>
+      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-num">02</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M8 36V16l14-8 14 8v20"/><path d="M16 36v-8h12v8"/><path d="M14 20h4m8 0h4M14 26h4m8 0h4"/>
+      </svg>
+      <div class="service-name">Asset & Revenue Strategy</div>
+      <p class="service-desc">Data-driven revenue management, pricing strategy, and distribution optimization that consistently outperform competitive benchmarks across all market cycles.</p>
+      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-num">03</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="22" cy="16" r="6"/><path d="M10 36c0-6.627 5.373-12 12-12s12 5.373 12 12"/>
+        <path d="M32 10c2.2 1.6 4 4.3 4 7M12 10C9.8 11.6 8 14.3 8 17"/>
+      </svg>
+      <div class="service-name">Talent & Culture Development</div>
+      <p class="service-desc">Recruiting, training, and cultivating the hospitality talent that transforms good properties into legendary ones — building cultures of genuine care and pride.</p>
+      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <span class="service-num">04</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M22 6l4 8 9 1.3-6.5 6.3 1.5 9L22 26l-8 4.6 1.5-9L9 15.3 18 14z"/>
+        <circle cx="22" cy="22" r="16"/>
+      </svg>
+      <div class="service-name">Brand & Guest Experience</div>
+      <p class="service-desc">Defining and delivering the brand promise through every touchpoint — from pre-arrival through post-stay, ensuring loyalty that spans generations of guests.</p>
+      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-num">05</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="8" y="8" width="28" height="28" rx="2"/>
+        <path d="M8 16h28M16 8v8M28 8v8"/><path d="M14 24h6m0 0l-2-2m2 2l-2 2M24 30h6m-6 0l2-2m-2 2l2 2"/>
+      </svg>
+      <div class="service-name">Pre-Opening & Development</div>
+      <p class="service-desc">End-to-end consulting for new builds and repositioning projects — from concept and positioning through soft opening and ramp-up to full operational maturity.</p>
+      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-num">06</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M10 34c0-8 4-14 12-14s12 6 12 14"/><path d="M22 20V10"/>
+        <path d="M16 14l6-4 6 4"/><ellipse cx="22" cy="8" rx="4" ry="2"/>
+      </svg>
+      <div class="service-name">Sustainability & ESG Programs</div>
+      <p class="service-desc">Designing and implementing responsible hospitality frameworks that reduce environmental impact, embed social value, and future-proof property investments.</p>
+      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>Hotel Management</span><span class="sep">◆</span>
+    <span>Revenue Optimization</span><span class="sep">◆</span>
+    <span>Guest Experience</span><span class="sep">◆</span>
+    <span>Luxury Consulting</span><span class="sep">◆</span>
+    <span>Resort Operations</span><span class="sep">◆</span>
+    <span>Talent Development</span><span class="sep">◆</span>
+    <span>Brand Strategy</span><span class="sep">◆</span>
+    <span>Pre-Opening Services</span><span class="sep">◆</span>
+    <span>Hotel Management</span><span class="sep">◆</span>
+    <span>Revenue Optimization</span><span class="sep">◆</span>
+    <span>Guest Experience</span><span class="sep">◆</span>
+    <span>Luxury Consulting</span><span class="sep">◆</span>
+    <span>Resort Operations</span><span class="sep">◆</span>
+    <span>Talent Development</span><span class="sep">◆</span>
+    <span>Brand Strategy</span><span class="sep">◆</span>
+    <span>Pre-Opening Services</span><span class="sep">◆</span>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <div class="section-label reveal"><div class="section-label-line"></div><span>Our Properties</span></div>
+      <h2 class="section-title reveal reveal-delay-1">A Portfolio of<br><em>Distinction</em></h2>
+    </div>
+    <a href="#" class="portfolio-link reveal reveal-delay-2">View All Properties →</a>
+  </div>
+  <div class="portfolio-grid reveal">
+    <a href="#property-obsidian" class="portfolio-item">
+      <div class="portfolio-item-bg" style="background-image: url('https://thumbs.dreamstime.com/b/modern-house-interior-exterior-design-46517595.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="portfolio-item-overlay"></div>
+      <div class="portfolio-item-info">
+        <span class="portfolio-item-tag">Urban Retreat</span>
+        <div class="portfolio-item-name">The Obsidian Ritz</div>
+        <div class="portfolio-item-loc">Paris, France — 5-Star</div>
+      </div>
+    </a>
+    <a href="#property-velara" class="portfolio-item">
+      <div class="portfolio-item-bg" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/026/586/056/small/beautiful-modern-house-exterior-with-carport-modern-residential-district-and-minimalist-building-concept-by-ai-generated-free-photo.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="portfolio-item-overlay"></div>
+      <div class="portfolio-item-info">
+        <span class="portfolio-item-tag">Island Resort</span>
+        <div class="portfolio-item-name">Velara Maldives</div>
+        <div class="portfolio-item-loc">North Malé Atoll — Ultra-Luxury</div>
+      </div>
+    </a>
+    <a href="#property-chalet" class="portfolio-item">
+      <div class="portfolio-item-bg" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPygByVCJyLXQ8IXNrEqtUrlwvDXU7Kly3hw&s'); background-size: cover; background-position: center;"></div>
+      <div class="portfolio-item-overlay"></div>
+      <div class="portfolio-item-info">
+        <span class="portfolio-item-tag">Mountain Estate</span>
+        <div class="portfolio-item-name">Chalet Seraphine</div>
+        <div class="portfolio-item-loc">Courchevel, France — Private Chalet</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+  <div class="testimonial-inner">
+    <div class="section-label reveal" style="justify-content:center;">
+      <div class="section-label-line"></div>
+      <span>Client Voices</span>
+      <div class="section-label-line"></div>
+    </div>
+    <p class="testimonial-text reveal reveal-delay-1" id="testimonialText">
+      "Aurum transformed our property from a well-regarded hotel into <em>a destination</em>. Guest satisfaction scores climbed 34% within six months. Their team doesn't manage — they <em>elevate</em>."
+    </p>
+    <div class="testimonial-divider reveal reveal-delay-2"></div>
+    <div class="testimonial-author reveal reveal-delay-3" id="testimonialAuthor">MARCO FABRIZI — OWNER, PALAZZO VENEZIA RESORT</div>
+    <div class="testimonial-dots">
+      <div class="testimonial-dot active" data-idx="0"></div>
+      <div class="testimonial-dot" data-idx="1"></div>
+      <div class="testimonial-dot" data-idx="2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header">
+    <div class="section-label reveal"><div class="section-label-line"></div><span>How We Work</span></div>
+    <h2 class="section-title reveal reveal-delay-1">Our Signature<br><em>Method</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal" data-num="01">
+      <div class="process-step-name">Discovery & Assessment</div>
+      <p class="process-step-desc">We conduct a deep-dive audit of your property's physical assets, market positioning, team capability, and guest experience to identify opportunities and gaps.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-1" data-num="02">
+      <div class="process-step-name">Strategy & Vision</div>
+      <p class="process-step-desc">Together, we develop a bespoke management framework and performance roadmap aligned with your ownership goals, market context, and brand ambitions.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2" data-num="03">
+      <div class="process-step-name">Implementation</div>
+      <p class="process-step-desc">Our seasoned management team embeds on-property to execute the plan — driving change, training teams, and establishing new operational rhythms with precision.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3" data-num="04">
+      <div class="process-step-name">Measure & Evolve</div>
+      <p class="process-step-desc">Through rigorous KPI tracking and continuous feedback loops, we refine our approach to ensure sustained excellence and long-term performance growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="cta-text-block">
+    <div class="section-label reveal"><div class="section-label-line"></div><span>Get In Touch</span></div>
+    <h2 class="section-title reveal reveal-delay-1">Ready to<br><em>Reimagine</em><br>Your Property?</h2>
+    <p class="reveal reveal-delay-2">Whether you're opening a new property, repositioning an existing asset, or seeking a management partner who shares your exacting standards, we would welcome the conversation.</p>
+    <a href="mailto:info@gdsignature.com" class="btn-ghost reveal reveal-delay-3">info@gdsignature.com</a>
+  </div>
+  <div class="cta-form-block reveal reveal-delay-2">
+    <div class="form-grid">
+      <div class="form-row"><label>First Name</label><input type="text" placeholder="Alexandre"></div>
+      <div class="form-row"><label>Last Name</label><input type="text" placeholder="Moreau"></div>
+    </div>
+    <div class="form-row"><label>Email Address</label><input type="email" placeholder="alex@yourproperty.com"></div>
+    <div class="form-row">
+      <label>Property Type</label>
+      <select>
+        <option value="">Select a property type</option>
+        <option>Boutique Hotel (under 50 rooms)</option>
+        <option>City Hotel (50–200 rooms)</option>
+        <option>Luxury Resort</option>
+        <option>Private Villa / Estate</option>
+        <option>New Development</option>
+      </select>
+    </div>
+    <div class="form-row"><label>How can we help?</label><textarea placeholder="Tell us about your property and objectives…"></textarea></div>
+    <button class="form-submit">Send Inquiry →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo-word">GD</span>
+      <span class="footer-logo-mark">Signature Hospitality</span>
+      <p class="footer-brand-desc">Exceptional hospitality management for the world's finest properties since 2000. Based in Monaco, operating globally.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press & Media</a></li>
+        <li><a href="#">Sustainability</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Hotel Management</a></li>
+        <li><a href="#">Revenue Strategy</a></li>
+        <li><a href="#">Brand Experience</a></li>
+        <li><a href="#">Pre-Opening</a></li>
+        <li><a href="#">Consulting</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">Monaco HQ</a></li>
+        <li><a href="#">London Office</a></li>
+        <li><a href="#">Dubai Office</a></li>
+        <li><a href="#">Singapore Office</a></li>
+        <li><a href="#">inquiries@aurum-hospitality.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Aurum Hospitality Group. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="#" aria-label="Instagram">ig</a>
+      <a href="#" aria-label="Twitter">tw</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // CURSOR
+//   const dot = document.getElementById('cursorDot');
+//   const ring = document.getElementById('cursorRing');
+//   let mx=0,my=0,rx=0,ry=0;
+//   document.addEventListener('mousemove', e => {
+//     mx=e.clientX; my=e.clientY;
+//     dot.style.left=mx+'px'; dot.style.top=my+'px';
+//   });
+//   (function animRing(){
+//     rx += (mx-rx)*0.14; ry += (my-ry)*0.14;
+//     ring.style.left=rx+'px'; ring.style.top=ry+'px';
+//     requestAnimationFrame(animRing);
+//   })();
+//   document.querySelectorAll('a,button,.service-card,.portfolio-item,.testimonial-dot').forEach(el=>{
+//     el.addEventListener('mouseenter',()=>{ dot.classList.add('hover'); ring.classList.add('hover'); });
+//     el.addEventListener('mouseleave',()=>{ dot.classList.remove('hover'); ring.classList.remove('hover'); });
+//   });
+
+  // NAV SCROLL, change nav links a color to smoke when scrolled
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', ()=>{ nav.classList.toggle('scrolled', window.scrollY>60);
+  });
+
+  // REVEAL ON SCROLL
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  },{ threshold:0.1, rootMargin:'0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // TESTIMONIALS
+  const testimonials = [
+    { text:`"Aurum transformed our property from a well-regarded hotel into <em>a destination</em>. Guest satisfaction scores climbed 34% within six months. Their team doesn't manage — they <em>elevate</em>."`, author:'MARCO FABRIZI — OWNER, PALAZZO VENEZIA RESORT' },
+    { text:`"The pre-opening support was <em>extraordinary</em>. They anticipated challenges we hadn't even considered. Our soft opening was the smoothest in our portfolio's history."`, author:'CLAIRE DRUMMOND — CEO, BOREAL HOTEL GROUP' },
+    { text:`"Revenue per available room increased by <em>28% in year one</em>. More importantly, the culture they built in our team has lasted. We genuinely feel they are partners, not vendors."`, author:'SHEIKH TARIQ AL-FAROUK — PRINCIPAL, AL SARAY RESORTS' }
+  ];
+  let activeIdx=0;
+  const textEl=document.getElementById('testimonialText');
+  const authorEl=document.getElementById('testimonialAuthor');
+  const dots=document.querySelectorAll('.testimonial-dot');
+  function switchTestimonial(idx){
+    textEl.style.opacity='0'; textEl.style.transform='translateY(10px)';
+    authorEl.style.opacity='0';
+    setTimeout(()=>{
+      textEl.innerHTML=testimonials[idx].text;
+      authorEl.textContent=testimonials[idx].author;
+      textEl.style.transition='opacity 0.6s ease, transform 0.6s ease';
+      authorEl.style.transition='opacity 0.6s ease 0.1s';
+      textEl.style.opacity='1'; textEl.style.transform='translateY(0)';
+      authorEl.style.opacity='1';
+    },350);
+    dots.forEach(d=>d.classList.remove('active'));
+    dots[idx].classList.add('active');
+    activeIdx=idx;
+  }
+  dots.forEach(d=>d.addEventListener('click',()=>switchTestimonial(+d.dataset.idx)));
+  setInterval(()=>switchTestimonial((activeIdx+1)%testimonials.length),6000);
+
+  // HERO CAROUSEL
+  const carouselSlides=document.querySelectorAll('.hero-carousel-slide');
+  let currentSlide=0;
+  function rotateCarousel(){
+    carouselSlides.forEach(slide=>slide.classList.remove('active'));
+    carouselSlides[currentSlide].classList.add('active');
+    currentSlide=(currentSlide+1)%carouselSlides.length;
+  }
+  if(carouselSlides.length>0){
+    setInterval(rotateCarousel,4000);
+  }
+
+  // PARALLAX
+  const heroCircle=document.querySelector('.hero-circle');
+  window.addEventListener('scroll',()=>{
+    const sy=window.scrollY;
+    if(heroCircle) heroCircle.style.transform=`translateY(calc(-50% + ${sy*0.12}px))`;
+  });
+
+  // FORM FEEDBACK
+  const btn=document.querySelector('.form-submit');
+  if(btn) btn.addEventListener('click',function(){
+    const orig=this.textContent;
+    this.textContent='Message Sent ✓';
+    this.style.background='#3E6B4F'; this.style.color='#fff';
+    setTimeout(()=>{ this.textContent=orig; this.style.background=''; this.style.color=''; },3000);
+  });
+
+  // SMOOTH SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+</script>
+</body>
+</html>
