@@ -641,7 +641,7 @@
     font-size: 1.55rem;
     font-weight: 300;
     color: var(--ink);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.2;
   }
   .service-desc {
@@ -1170,7 +1170,7 @@
     .service-card:first-child { padding-top: 0; }
     .service-num {
       grid-column: 1;
-      grid-row: 1 / span 3;
+      grid-row: 1 / span 2;
       font-size: 0.58rem;
       letter-spacing: 0.18em;
       color: var(--steel);
@@ -1184,14 +1184,14 @@
       margin-bottom: 0.45rem;
       line-height: 1.25;
     }
-    .service-desc {
+    .service-link {
       grid-column: 2;
-      font-size: 0.7rem;
-      line-height: 1.75;
-      margin-bottom: 0;
-      color: var(--smoke);
+      display: inline-flex;
+      opacity: 1;
+      transform: none;
+      font-size: 0.48rem;
+      margin-top: 0.2rem;
     }
-    .service-link { display: none; }
     .portfolio { padding: 5rem 1.5rem; }
     .portfolio-header {
       flex-direction: column;
@@ -1260,7 +1260,6 @@
     }
     .service-num { font-size: 0.52rem; margin-top: 0.3rem; }
     .service-name { font-size: 1.05rem; }
-    .service-desc { font-size: 0.68rem; line-height: 1.7; }
     .process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
     .footer-top { grid-template-columns: 1fr; gap: 2rem; }
     .marquee-track span { font-size: 0.85rem; padding: 0 1.5rem; }
@@ -1286,7 +1285,7 @@
   <ul class="nav-links" id="navMenu">
     <li><a href="#home">Home</a></li>
     <li><a href="about-us.html">About Us</a></li>
-    <li><a href="#services">Services</a></li>
+    <li><a href="services.html">Services</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#contact" class="nav-cta">Inquire</a></li>
   </ul>
@@ -1375,8 +1374,7 @@
         <circle cx="22" cy="25" r="3"/><path d="M22 28v4"/>
       </svg>
       <div class="service-name">Hotel Operations Management</div>
-      <p class="service-desc">Comprehensive oversight of daily hotel operations — from front office excellence and housekeeping standards to F&B management and engineering maintenance.</p>
-      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <a href="services.html#operations" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-1">
       <span class="service-num">02</span>
@@ -1384,8 +1382,7 @@
         <path d="M8 36V16l14-8 14 8v20"/><path d="M16 36v-8h12v8"/><path d="M14 20h4m8 0h4M14 26h4m8 0h4"/>
       </svg>
       <div class="service-name">Asset & Revenue Strategy</div>
-      <p class="service-desc">Data-driven revenue management, pricing strategy, and distribution optimization that consistently outperform competitive benchmarks across all market cycles.</p>
-      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <a href="services.html#revenue" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-2">
       <span class="service-num">03</span>
@@ -1394,8 +1391,7 @@
         <path d="M32 10c2.2 1.6 4 4.3 4 7M12 10C9.8 11.6 8 14.3 8 17"/>
       </svg>
       <div class="service-name">Talent & Culture Development</div>
-      <p class="service-desc">Recruiting, training, and cultivating the hospitality talent that transforms good properties into legendary ones — building cultures of genuine care and pride.</p>
-      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <a href="services.html#talent" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-3">
       <span class="service-num">04</span>
@@ -1404,8 +1400,7 @@
         <circle cx="22" cy="22" r="16"/>
       </svg>
       <div class="service-name">Brand & Guest Experience</div>
-      <p class="service-desc">Defining and delivering the brand promise through every touchpoint — from pre-arrival through post-stay, ensuring loyalty that spans generations of guests.</p>
-      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <a href="services.html#brand" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-1">
       <span class="service-num">05</span>
@@ -1414,8 +1409,7 @@
         <path d="M8 16h28M16 8v8M28 8v8"/><path d="M14 24h6m0 0l-2-2m2 2l-2 2M24 30h6m-6 0l2-2m-2 2l2 2"/>
       </svg>
       <div class="service-name">Pre-Opening & Development</div>
-      <p class="service-desc">End-to-end consulting for new builds and repositioning projects — from concept and positioning through soft opening and ramp-up to full operational maturity.</p>
-      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <a href="services.html#preopening" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-2">
       <span class="service-num">06</span>
@@ -1424,8 +1418,7 @@
         <path d="M16 14l6-4 6 4"/><ellipse cx="22" cy="8" rx="4" ry="2"/>
       </svg>
       <div class="service-name">Sustainability & ESG Programs</div>
-      <p class="service-desc">Designing and implementing responsible hospitality frameworks that reduce environmental impact, embed social value, and future-proof property investments.</p>
-      <a href="#" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <a href="services.html#sustainability" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
   </div>
 </section>
@@ -1582,7 +1575,7 @@
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="about-us.html">About Us</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="services.html">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#contact">Inquire</a></li>
       </ul>
