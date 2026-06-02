@@ -102,8 +102,13 @@
   }
   nav.scrolled .nav-cta:hover { background: var(--steel) !important; color: var(--white) !important; }
   .nav-logo {
-    display: flex; align-items: baseline; gap: 0.6rem;
+    display: flex; align-items: center; gap: 0.8rem;
     text-decoration: none;
+  }
+  .nav-logo img {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
   }
   .nav-logo-word {
     font-family: var(--serif);
@@ -337,6 +342,19 @@
   .btn-primary:hover { background: var(--steel); gap: 1.2rem; }
   .btn-primary svg { transition: transform 0.3s; }
   .btn-primary:hover svg { transform: translateX(4px); }
+  .btn-ghost-email {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    /* color: var(--slate); */
+    color: var(--steel);
+    text-decoration: none;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(43,58,74,0.25);
+    padding-bottom: 0.2rem;
+    transition: color 0.3s, border-color 0.3s;
+  }
   .btn-ghost {
     display: inline-flex; align-items: center; gap: 0.7rem;
     /* color: var(--slate); */
@@ -948,6 +966,13 @@
     display: block;
     margin-top: 0.2rem;
   }
+  .footer-logo-img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    display: block;
+  }
   .footer-brand-desc {
     font-size: 0.66rem;
     line-height: 2;
@@ -1038,8 +1063,7 @@
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#" class="nav-logo">
-    <span class="nav-logo-word">GD</span>
-    <span class="nav-logo-mark">Signature Hospitality</span>
+    <img src="assets/logo.png" alt="GD Logo">
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -1303,7 +1327,7 @@
     <div class="section-label reveal"><div class="section-label-line"></div><span>Get In Touch</span></div>
     <h2 class="section-title reveal reveal-delay-1">Ready to<br><em>Reimagine</em><br>Your Property?</h2>
     <p class="reveal reveal-delay-2">Whether you're opening a new property, repositioning an existing asset, or seeking a management partner who shares your exacting standards, we would welcome the conversation.</p>
-    <a href="mailto:info@gdsignature.com" class="btn-ghost reveal reveal-delay-3">info@gdsignature.com</a>
+    <a href="mailto:info@gdsignature.com" class="btn-ghost-email reveal reveal-delay-3">info@gdsignature.com</a>
   </div>
   <div class="cta-form-block reveal reveal-delay-2">
     <div class="form-grid">
@@ -1322,6 +1346,7 @@
         <option>New Development</option>
       </select>
     </div>
+    <div class="form-row"><label>Property Size (m²)</label><input type="number" min="1" step="1" placeholder="e.g. 850"></div>
     <div class="form-row"><label>How can we help?</label><textarea placeholder="Tell us about your property and objectives…"></textarea></div>
     <button class="form-submit">Send Inquiry →</button>
   </div>
@@ -1331,8 +1356,7 @@
 <footer>
   <div class="footer-top">
     <div>
-      <span class="footer-logo-word">GD</span>
-      <span class="footer-logo-mark">Signature Hospitality</span>
+      <img src="assets/logo.png" alt="GD Logo" class="footer-logo-img">
       <p class="footer-brand-desc">Exceptional hospitality management for the world's finest properties since 2000. Based in Monaco, operating globally.</p>
     </div>
     <div class="footer-col">
