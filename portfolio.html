@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — GD Signature Hospitality Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:    #F4F3F0;
+    --porcelain:#ECEAE5;
+    --linen:    #E2DFD8;
+    --slate:    #2B3A4A;
+    --steel:    #4A6FA5;
+    --steel-lt: #6B8DC4;
+    --platinum: #B8BFC8;
+    --smoke:    #8A9099;
+    --ink:      #1A2430;
+    --white:    #FAFAF8;
+    --serif:    'Cormorant Garamond', Georgia, serif;
+    --sans:     'DM Sans', sans-serif;
+    --ease:     cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--slate);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--steel); color: var(--white); }
+  body::before {
+    content:'';
+    position: fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9997;
+  }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--linen); }
+  ::-webkit-scrollbar-thumb { background: var(--steel); border-radius: 2px; }
+
+  /* Nav */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(244,243,240,0.94);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 1px 0 rgba(43,58,74,0.08);
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 56px; width: auto; object-fit: contain; }
+  .nav-links { display: flex; gap: 3rem; list-style: none; }
+  .nav-links a {
+    color: var(--smoke);
+    text-decoration: none;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content:'';
+    position: absolute; bottom:-4px; left:0;
+    width:0; height:1px;
+    background: var(--steel);
+    transition: width 0.4s var(--ease);
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--slate); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-cta {
+    font-size: 0.58rem !important;
+    color: var(--steel) !important;
+    border: 1px solid rgba(74,111,165,0.35) !important;
+    padding: 0.6rem 1.4rem;
+    transition: background 0.3s, color 0.3s !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--steel) !important; color: var(--white) !important; }
+  .nav-toggle {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 6px;
+    width: 44px; height: 44px; padding: 10px;
+    background: none; border: none; cursor: pointer; z-index: 110;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 1px;
+    background: var(--slate);
+    transition: transform 0.35s var(--ease), opacity 0.35s;
+    transform-origin: center;
+  }
+  nav.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  nav.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(26, 36, 48, 0.45); z-index: 98;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.35s var(--ease);
+  }
+  .nav-overlay.visible { opacity: 1; pointer-events: auto; }
+
+  /* Page hero */
+  .page-hero {
+    position: relative;
+    min-height: 58vh;
+    display: flex;
+    align-items: center;
+    padding: 10rem 4rem 5rem;
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(26,36,48,0.78) 0%, rgba(43,58,74,0.5) 45%, rgba(74,111,165,0.3) 100%),
+      url('https://cdn.confident-group.com/wp-content/uploads/2025/01/09175702/villa-cover.jpg') center / cover no-repeat;
+  }
+  .page-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(250,250,248,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(250,250,248,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+  .page-hero-content { position: relative; z-index: 2; max-width: 720px; }
+  .section-label {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .section-label-line { width: 30px; height:1px; background: var(--steel-lt); }
+  .section-label span {
+    font-size: 0.52rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--platinum);
+    font-weight: 400;
+  }
+  .page-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 6vw, 5.2rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--steel-lt); }
+  .page-hero-lead {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2vw, 1.65rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.45;
+    color: rgba(250,250,248,0.88);
+    max-width: 520px;
+  }
+
+  /* Marquee */
+  .marquee-wrap {
+    background: var(--slate);
+    overflow: hidden;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(250,250,248,0.06);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee-track span {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(250,250,248,0.35);
+    white-space: nowrap;
+    padding: 0 2.5rem;
+  }
+  .marquee-track span::after {
+    content: '◆';
+    margin-left: 2.5rem;
+    font-size: 0.45rem;
+    font-style: normal;
+    color: var(--steel-lt);
+    vertical-align: middle;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Portfolio main */
+  .portfolio-main {
+    padding: 6rem 4rem 8rem;
+    background: var(--white);
+  }
+  .portfolio-toolbar {
+    max-width: 1320px;
+    margin: 0 auto 4rem;
+  }
+  .portfolio-toolbar-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .portfolio-toolbar-text h2 em { font-style: italic; color: var(--steel); }
+  .portfolio-toolbar-text p {
+    font-size: 0.72rem;
+    line-height: 1.9;
+    color: var(--smoke);
+    max-width: 420px;
+    margin-top: 0.8rem;
+  }
+
+  /* Property grid */
+  .property-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .property-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--porcelain);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    min-height: 380px;
+  }
+
+  .property-card-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.85s var(--ease);
+  }
+  .property-card:hover .property-card-img { transform: scale(1.06); }
+  .property-card-img::after {
+    content:'';
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(26,36,48,0.15) 0%, rgba(26,36,48,0.55) 100%);
+    transition: opacity 0.4s;
+  }
+  .property-card:hover .property-card-img::after {
+    background: linear-gradient(160deg, rgba(26,36,48,0.25) 0%, rgba(26,36,48,0.72) 100%);
+  }
+
+  .property-card-body {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 2rem 2rem 2.2rem;
+    z-index: 3;
+    transform: translateY(8px);
+    transition: transform 0.45s var(--ease);
+  }
+  .property-card:hover .property-card-body { transform: translateY(0); }
+
+  .property-card-tag {
+    display: inline-block;
+    font-size: 0.46rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(250,250,248,0.65);
+    margin-bottom: 0.5rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(250,250,248,0.2);
+    backdrop-filter: blur(4px);
+  }
+  .property-card-name {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 0.35rem;
+  }
+  .property-card-loc {
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    color: rgba(250,250,248,0.5);
+  }
+
+  .property-card-link {
+    position: absolute;
+    top: 1.8rem; right: 1.8rem;
+    width: 44px; height: 44px;
+    border: 1px solid rgba(250,250,248,0.25);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 3;
+    opacity: 0;
+    transform: translate(-8px, 8px);
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), background 0.3s, border-color 0.3s;
+  }
+  .property-card:hover .property-card-link {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  .property-card-link:hover {
+    background: var(--steel);
+    border-color: var(--steel);
+  }
+  .property-card-link svg { color: var(--white); }
+
+  .property-card::before {
+    content:'';
+    position: absolute; top: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--steel-lt);
+    transition: width 0.55s var(--ease);
+    z-index: 4;
+  }
+  .property-card:hover::before { width: 72px; }
+
+  /* CTA */
+  .portfolio-cta {
+    padding: 5rem 4rem;
+    background: var(--porcelain);
+    text-align: center;
+  }
+  .portfolio-cta-inner { max-width: 560px; margin: 0 auto; }
+  .portfolio-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.6rem);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  .portfolio-cta h2 em { font-style: italic; color: var(--steel); }
+  .portfolio-cta p {
+    font-size: 0.74rem;
+    line-height: 2;
+    color: var(--smoke);
+    margin-bottom: 2rem;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    background: var(--slate);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 1rem 2.4rem;
+    transition: background 0.3s, gap 0.3s;
+  }
+  .btn-primary:hover { background: var(--steel); gap: 1.2rem; }
+  .btn-primary svg { transition: transform 0.3s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
+  /* Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal.visible { opacity:1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.22s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+
+  /* Footer */
+  footer { background: var(--ink); padding: 5rem 4rem 3rem; }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(184,191,200,0.1);
+    margin-bottom: 2.5rem;
+  }
+  .footer-logo-img { height: 36px; width: auto; object-fit: contain; margin-bottom: 1rem; display: block; }
+  .footer-brand-desc {
+    font-size: 0.66rem; line-height: 2;
+    color: rgba(184,191,200,0.6);
+    margin-top: 1.2rem; max-width: 270px;
+  }
+  .footer-col h4 {
+    font-size: 0.52rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--steel-lt);
+    font-weight: 400; margin-bottom: 1.4rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.75rem; }
+  .footer-col ul a {
+    font-size: 0.65rem;
+    color: rgba(184,191,200,0.55);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-col ul a:hover { color: var(--white); }
+  .footer-socials { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+  .footer-socials a {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(184,191,200,0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(184,191,200,0.5);
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .footer-socials a:hover { border-color: var(--steel-lt); color: var(--white); }
+  .footer-socials svg { width: 14px; height: 14px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(184,191,200,0.35); }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .property-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(320px, 85vw);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 5.5rem 2.5rem 2.5rem;
+      background: var(--white);
+      transform: translateX(100%);
+      transition: transform 0.45s var(--ease);
+      box-shadow: -8px 0 40px rgba(26,36,48,0.08);
+    }
+    nav.menu-open .nav-links { transform: translateX(0); }
+    .nav-overlay { display: block; }
+    .page-hero { padding: 8rem 1.5rem 3.5rem; min-height: 50vh; }
+    .portfolio-main { padding: 4rem 1.5rem 5rem; }
+    .property-grid { grid-template-columns: 1fr; }
+    .property-card { min-height: 300px; }
+    .property-card-body { transform: none; }
+    .property-card-link { opacity: 1; transform: none; }
+    .portfolio-cta { padding: 4rem 1.5rem; }
+    footer { padding: 3.5rem 1.5rem 2rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo.png" alt="GD Signature">
+  </a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about-us.html">About Us</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Inquire</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-bg" aria-hidden="true"></div>
+  <div class="page-hero-grid" aria-hidden="true"></div>
+  <div class="page-hero-content reveal">
+    <div class="section-label">
+      <div class="section-label-line"></div>
+      <span>Our Portfolio</span>
+    </div>
+    <h1>Properties with<br><em>Character &amp; Soul</em></h1>
+    <p class="page-hero-lead">Every stay we steward tells a story — from sun-drenched Cretan villas to world-class urban retreats.</p>
+  </div>
+</header>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Volta Suites &amp; Villas</span><span>Volta Seaside Boutique Hotel</span><span>Rodo Seafront Villa</span><span>The Obsidian Ritz</span><span>Velara Maldives</span><span>Chalet Seraphine</span>
+    <span>Volta Suites &amp; Villas</span><span>Volta Seaside Boutique Hotel</span><span>Rodo Seafront Villa</span><span>The Obsidian Ritz</span><span>Velara Maldives</span><span>Chalet Seraphine</span>
+  </div>
+</div>
+
+<main class="portfolio-main">
+  <div class="portfolio-toolbar reveal">
+    <div class="portfolio-toolbar-text">
+      <h2>Explore our <em>collection</em></h2>
+      <p>Click any property to visit its website and discover the experience we help create — from boutique hotels and suites to private seafront villas.</p>
+    </div>
+  </div>
+
+  <div class="property-grid" id="propertyGrid">
+    <a href="https://www.voltastay.com/" target="_blank" rel="noopener noreferrer" class="property-card reveal">
+      <div class="property-card-img" style="background-image: url('https://holiwaysvillas.com/wp-content/uploads/2024/06/1-137-scaled.jpg');"></div>
+      <span class="property-card-link" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="property-card-body">
+        <span class="property-card-tag">Suites &amp; Villas</span>
+        <h3 class="property-card-name">Volta Suites &amp; Villas</h3>
+        <p class="property-card-loc">Gouves, Crete — Greece</p>
+      </div>
+    </a>
+
+    <a href="https://www.voltaseasidehotel.gr/" target="_blank" rel="noopener noreferrer" class="property-card reveal reveal-delay-1">
+      <div class="property-card-img" style="background-image: url('https://www.thehotel.gr/files/527/exterior-pool-1new.jpg');"></div>
+      <span class="property-card-link" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="property-card-body">
+        <span class="property-card-tag">Boutique Hotel</span>
+        <h3 class="property-card-name">Volta Seaside Boutique Hotel</h3>
+        <p class="property-card-loc">Kokkini Hani, Crete — Greece</p>
+      </div>
+    </a>
+
+    <a href="https://www.voltavillarodo.com/" target="_blank" rel="noopener noreferrer" class="property-card reveal reveal-delay-2">
+      <div class="property-card-img" style="background-image: url('https://cdn.confident-group.com/wp-content/uploads/2025/01/09175702/villa-cover.jpg');"></div>
+      <span class="property-card-link" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="property-card-body">
+        <span class="property-card-tag">Luxury Villa</span>
+        <h3 class="property-card-name">Rodo Seafront Villa</h3>
+        <p class="property-card-loc">Kokkini Hani, Crete — Greece</p>
+      </div>
+    </a>
+
+    <a href="https://www.ritzparis.com/" target="_blank" rel="noopener noreferrer" class="property-card reveal">
+      <div class="property-card-img" style="background-image: url('https://thumbs.dreamstime.com/b/modern-house-interior-exterior-design-46517595.jpg');"></div>
+      <span class="property-card-link" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="property-card-body">
+        <span class="property-card-tag">Urban Retreat</span>
+        <h3 class="property-card-name">The Obsidian Ritz</h3>
+        <p class="property-card-loc">Paris, France — 5-Star</p>
+      </div>
+    </a>
+
+    <a href="https://www.oneandonlyresorts.com/maldives" target="_blank" rel="noopener noreferrer" class="property-card reveal reveal-delay-1">
+      <div class="property-card-img" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/026/586/056/small/beautiful-modern-house-exterior-with-carport-modern-residential-district-and-minimalist-building-concept-by-ai-generated-free-photo.jpg');"></div>
+      <span class="property-card-link" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="property-card-body">
+        <span class="property-card-tag">Island Resort</span>
+        <h3 class="property-card-name">Velara Maldives</h3>
+        <p class="property-card-loc">North Malé Atoll — Ultra-Luxury</p>
+      </div>
+    </a>
+
+    <a href="https://www.courchevel.com/" target="_blank" rel="noopener noreferrer" class="property-card reveal reveal-delay-2">
+      <div class="property-card-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPygByVCJyLXQ8IXNrEqtUrlwvDXU7Kly3hw&s');"></div>
+      <span class="property-card-link" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="property-card-body">
+        <span class="property-card-tag">Mountain Estate</span>
+        <h3 class="property-card-name">Chalet Seraphine</h3>
+        <p class="property-card-loc">Courchevel, France — Private Chalet</p>
+      </div>
+    </a>
+
+    <a href="https://www.voltavillarodo.com/" target="_blank" rel="noopener noreferrer" class="property-card reveal reveal-delay-2">
+      <div class="property-card-img" style="background-image: url('https://cdn.confident-group.com/wp-content/uploads/2025/01/09175702/villa-cover.jpg');"></div>
+      <span class="property-card-link" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <div class="property-card-body">
+        <span class="property-card-tag">Luxury Villa</span>
+        <h3 class="property-card-name">Rodo Seafront Villa</h3>
+        <p class="property-card-loc">Kokkini Hani, Crete — Greece</p>
+      </div>
+    </a>
+  </div>
+</main>
+
+<section class="portfolio-cta">
+  <div class="portfolio-cta-inner reveal">
+    <h2>Your property could be <em>next</em></h2>
+    <p>We partner with owners who want to elevate their hospitality — from strategy and branding to day-to-day operations and direct bookings.</p>
+    <a href="index.html#contact" class="btn-primary">
+      Start a Conversation
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="GD Signature" class="footer-logo-img">
+      <p class="footer-brand-desc">Hospitality management for boutique hotels, villas, and distinctive stays — rooted in real operational experience.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="index.html#contact">Inquire</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@gdsignature.com">info@gdsignature.com</a></li>
+        <li><a href="tel:+37793500000">+377 93 50 00 00</a></li>
+      </ul>
+      <div class="footer-socials">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 GD Signature. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  const navToggle = document.getElementById('navToggle');
+  const navOverlay = document.getElementById('navOverlay');
+  const navMenu = document.getElementById('navMenu');
+
+  function setMobileMenu(open) {
+    nav.classList.toggle('menu-open', open);
+    navOverlay.classList.toggle('visible', open);
+    document.body.classList.toggle('menu-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  navToggle.addEventListener('click', () => setMobileMenu(!nav.classList.contains('menu-open')));
+  navOverlay.addEventListener('click', () => setMobileMenu(false));
+  navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMobileMenu(false)));
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) setMobileMenu(false);
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
