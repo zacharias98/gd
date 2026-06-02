@@ -572,7 +572,7 @@
 
   /* ─── SERVICES ────────────────────────────────────────── */
   .services {
-    padding: 10rem 4rem;
+    padding: 7rem 4rem;
     background: var(--paper);
   }
   .services-header {
@@ -580,7 +580,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: end;
-    margin-bottom: 6rem;
+    margin-bottom: 3.5rem;
   }
   .services-header p {
     font-size: 0.74rem;
@@ -590,28 +590,37 @@
   }
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
     border: 1px solid rgba(43,58,74,0.1);
     background: rgba(43,58,74,0.1);
   }
   .service-card {
-    padding: 3.5rem 3rem;
+    padding: 1.75rem 2.25rem;
     background: var(--paper);
     position: relative;
     overflow: hidden;
     transition: background 0.4s var(--ease);
+    display: grid;
+    grid-template-columns: 2.5rem 36px 1fr auto;
+    align-items: center;
+    gap: 0 1.25rem;
   }
   .service-card::before {
     content:'';
-    position: absolute; inset:0;
-    background: radial-gradient(ellipse at 0% 0%, rgba(74,111,165,0.07) 0%, transparent 60%);
-    opacity:0;
-    transition: opacity 0.4s;
+    position: absolute;
+    left: 0; top: 18%; bottom: 18%;
+    width: 2px;
+    background: var(--steel);
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.45s var(--ease);
   }
-  .service-card:hover { background: var(--white); }
-  .service-card:hover::before { opacity:1; }
-  /* top accent bar on hover */
+  .service-card:hover {
+    background: var(--white);
+    background-image: radial-gradient(ellipse at 0% 50%, rgba(74,111,165,0.06) 0%, transparent 55%);
+  }
+  .service-card:hover::before { transform: scaleY(1); }
   .service-card::after {
     content:'';
     position: absolute; top:0; left:0; right:0;
@@ -623,27 +632,39 @@
   }
   .service-card:hover::after { transform: scaleX(1); }
   .service-num {
-    font-family: var(--serif);
-    font-size: 3rem;
-    font-weight: 300;
-    color: rgba(74,111,165,0.14);
+    font-family: var(--sans);
+    font-size: 0.52rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: var(--steel);
     line-height: 1;
-    margin-bottom: 2rem;
-    display: block;
+    margin: 0;
+    opacity: 0.75;
+    grid-column: 1;
   }
   .service-icon {
-    width: 42px; height: 42px;
-    margin-bottom: 1.5rem;
+    width: 36px; height: 36px;
+    margin: 0;
     color: var(--steel);
+    opacity: 0.85;
+    transition: opacity 0.3s, transform 0.4s var(--ease);
+    grid-column: 2;
+  }
+  .service-card:hover .service-icon {
+    opacity: 1;
+    transform: scale(1.06);
   }
   .service-name {
     font-family: var(--serif);
-    font-size: 1.55rem;
+    font-size: 1.28rem;
     font-weight: 300;
     color: var(--ink);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    margin: 0;
+    line-height: 1.25;
+    transition: color 0.3s;
+    grid-column: 3;
   }
+  .service-card:hover .service-name { color: var(--slate); }
   .service-desc {
     font-size: 0.67rem;
     line-height: 1.9;
@@ -651,17 +672,19 @@
     margin-bottom: 2rem;
   }
   .service-link {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    font-size: 0.52rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.48rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--steel);
     text-decoration: none;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.3s, transform 0.3s, gap 0.3s;
+    opacity: 0.35;
+    transform: none;
+    transition: opacity 0.3s, gap 0.3s;
+    white-space: nowrap;
+    grid-column: 4;
   }
-  .service-card:hover .service-link { opacity:1; transform: translateY(0); }
+  .service-card:hover .service-link { opacity:1; gap: 0.75rem; }
   .service-link:hover { gap: 1rem; }
 
   /* ─── MARQUEE ─────────────────────────────────────────── */
@@ -1166,6 +1189,9 @@
       column-gap: 1rem;
       align-items: start;
     }
+    .service-card:hover { background-image: none; }
+    .service-card::before { display: none; }
+    .service-card::after { display: none; }
     .service-card:last-child { border-bottom: none; padding-bottom: 0; }
     .service-card:first-child { padding-top: 0; }
     .service-num {
