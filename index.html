@@ -161,6 +161,49 @@
   .nav-cta:hover { background: var(--steel) !important; color: var(--white) !important; }
   .nav-cta::after { display:none !important; }
 
+  /* Mobile nav toggle */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 110;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--paper);
+    transition: transform 0.35s var(--ease), opacity 0.35s, background 0.3s;
+    transform-origin: center;
+  }
+  nav.scrolled .nav-toggle span { background: var(--slate); }
+  nav.menu-open .nav-toggle span { background: var(--slate); }
+  nav.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  nav.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 36, 48, 0.45);
+    z-index: 98;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease);
+  }
+  .nav-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   /* ─── HERO CAROUSEL ───────────────────────────────────── */
   .hero-carousel {
     position: absolute; inset: 0;
@@ -1036,30 +1079,191 @@
 
   /* ─── RESPONSIVE ──────────────────────────────────────── */
   @media (max-width: 900px) {
-    nav { padding: 1.5rem 2rem; }
-    nav.scrolled { padding: 1rem 2rem; }
-    .nav-links { display:none; }
-    .hero-content { padding: 0 2rem 8rem; }
-    .hero-numeral { display:none; }
-    .hero-stats { grid-template-columns: repeat(2,1fr); }
-    .hero-scroll-hint { display:none; }
-    .about, .services-header, .cta-section { grid-template-columns:1fr; gap:3rem; }
-    .about { padding:5rem 2rem; }
-    .services { padding:5rem 2rem; }
-    .services-grid { grid-template-columns:1fr; }
-    .portfolio { padding:5rem 2rem; }
-    .portfolio-grid { grid-template-columns:1fr; }
-    .portfolio-item:first-child { min-height:400px; }
-    .testimonial-section { padding:6rem 2rem; }
-    .process { padding:6rem 2rem; }
-    .process-steps { grid-template-columns:1fr 1fr; gap:3rem; }
-    .process-steps::before { display:none; }
-    .cta-section { padding:6rem 2rem; }
-    footer { padding:4rem 2rem 2rem; }
-    .footer-top { grid-template-columns:1fr 1fr; gap:3rem; }
-    /* .cursor-dot, .cursor-ring { display:none; } */
-    body { cursor:default; }
-    * { cursor:default !important; }
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.9rem 1.5rem; }
+    .nav-toggle { display: flex; }
+    .nav-logo img { height: 48px; }
+    .nav-links {
+      position: fixed;
+      top: 0; right: 0;
+      width: min(320px, 88vw);
+      height: 100dvh;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2rem;
+      padding: 5rem 2.5rem 2.5rem;
+      background: rgba(244, 243, 240, 0.98);
+      backdrop-filter: blur(20px);
+      box-shadow: -8px 0 40px rgba(26, 36, 48, 0.12);
+      transform: translateX(100%);
+      transition: transform 0.45s var(--ease);
+      z-index: 99;
+    }
+    nav.menu-open .nav-links { transform: translateX(0); }
+    .nav-overlay { display: block; }
+    .nav-links a {
+      color: var(--slate);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+    }
+    .nav-cta {
+      color: var(--steel) !important;
+      border-color: var(--steel) !important;
+      margin-top: 0.5rem;
+    }
+    .hero {
+      min-height: 100svh;
+      height: auto;
+      padding-bottom: 0;
+    }
+    .hero-content {
+      padding: 6rem 1.5rem 1.5rem;
+      max-width: 100%;
+    }
+    .hero-title { font-size: clamp(2.6rem, 11vw, 4rem); margin-bottom: 1.5rem; }
+    .hero-desc { max-width: 100%; margin-bottom: 2rem; font-size: 0.8rem; }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+    .btn-primary, .btn-ghost {
+      justify-content: center;
+      text-align: center;
+      padding: 1rem 1.5rem;
+    }
+    .hero-numeral, .hero-circle, .hero-vbar, .hero-tag { display: none; }
+    .hero-scroll-hint { display: none; }
+    .hero-stats {
+      position: relative;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .hero-stat {
+      padding: 1.1rem 1.25rem;
+    }
+    .hero-stat:nth-child(2) { border-right: none; }
+    .hero-stat-num { font-size: 1.6rem; }
+    .about, .services-header, .cta-section { grid-template-columns: 1fr; gap: 3rem; }
+    .about { padding: 5rem 1.5rem; }
+    .about-text p { max-width: 100%; }
+    .about-frame { width: min(340px, 100%); height: auto; aspect-ratio: 340 / 440; }
+    .about-deco-num { font-size: 5rem; right: -0.5rem; top: -1rem; }
+    .services { padding: 5rem 1.5rem; }
+    .services-header { margin-bottom: 2.5rem; gap: 1.5rem; }
+    .services-header p { font-size: 0.72rem; line-height: 1.85; }
+    .services-grid {
+      grid-template-columns: 1fr;
+      border: none;
+      background: transparent;
+      gap: 0;
+    }
+    .service-card {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid rgba(43, 58, 74, 0.08);
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      column-gap: 1rem;
+      align-items: start;
+    }
+    .service-card:last-child { border-bottom: none; padding-bottom: 0; }
+    .service-card:first-child { padding-top: 0; }
+    .service-num {
+      grid-column: 1;
+      grid-row: 1 / span 3;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      color: var(--steel);
+      margin: 0.35rem 0 0;
+      opacity: 0.85;
+    }
+    .service-icon { display: none; }
+    .service-name {
+      grid-column: 2;
+      font-size: 1.15rem;
+      margin-bottom: 0.45rem;
+      line-height: 1.25;
+    }
+    .service-desc {
+      grid-column: 2;
+      font-size: 0.7rem;
+      line-height: 1.75;
+      margin-bottom: 0;
+      color: var(--smoke);
+    }
+    .service-link { display: none; }
+    .portfolio { padding: 5rem 1.5rem; }
+    .portfolio-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-item:first-child {
+      grid-row: auto;
+      min-height: 320px;
+    }
+    .portfolio-item:not(:first-child) { min-height: 260px; }
+    .portfolio-item-info { padding: 1.75rem; transform: none; }
+    .portfolio-item-name { font-size: 1.6rem; }
+    .testimonial-section { padding: 5rem 1.5rem; }
+    .testimonial-section::before { font-size: 12rem; top: 1rem; left: 0.5rem; }
+    .testimonial-text { font-size: clamp(1.25rem, 5vw, 1.7rem); margin-bottom: 2rem; }
+    .testimonial-author { font-size: 0.5rem; letter-spacing: 0.2em; line-height: 1.6; }
+    .process { padding: 5rem 1.5rem; }
+    .process-header { margin-bottom: 3rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem 1.5rem; }
+    .process-steps::before { display: none; }
+    .process-step { padding: 0 0 0 0; padding-top: 4rem; }
+    .cta-section { padding: 5rem 1.5rem; gap: 3rem; }
+    .cta-section::before, .cta-section::after { display: none; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-row input,
+    .form-row select,
+    .form-row textarea { font-size: 16px; }
+    footer { padding: 3.5rem 1.5rem 2rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    body { cursor: default; }
+    body.menu-open { overflow: hidden; }
+    * { cursor: default !important; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 1rem 1.25rem; }
+    nav.scrolled { padding: 0.75rem 1.25rem; }
+    .nav-logo img { height: 40px; }
+    .hero-content { padding: 5.5rem 1.25rem 1.25rem; }
+    .hero-title { font-size: clamp(2.2rem, 12vw, 3rem); line-height: 1; }
+    .hero-stats { grid-template-columns: 1fr; }
+    .hero-stat { border-right: none !important; border-bottom: 1px solid rgba(43, 58, 74, 0.1); }
+    .hero-stat:last-child { border-bottom: none; }
+    .section-title { font-size: clamp(2rem, 9vw, 2.6rem); }
+    .about, .services, .portfolio, .testimonial-section, .process, .cta-section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    .about, .services, .portfolio, .testimonial-section, .process, .cta-section {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    .service-card {
+      padding: 1.35rem 0;
+      grid-template-columns: 2rem 1fr;
+      column-gap: 0.85rem;
+    }
+    .service-num { font-size: 0.52rem; margin-top: 0.3rem; }
+    .service-name { font-size: 1.05rem; }
+    .service-desc { font-size: 0.68rem; line-height: 1.7; }
+    .process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .marquee-track span { font-size: 0.85rem; padding: 0 1.5rem; }
   }
 </style>
 </head>
@@ -1069,11 +1273,17 @@
 <div class="cursor-ring" id="cursorRing"></div> -->
 
 <!-- NAV -->
+<div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 <nav id="mainNav">
   <a href="#" class="nav-logo">
     <img src="assets/logo.png" alt="GD Logo">
   </a>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="navMenu">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
@@ -1427,6 +1637,25 @@
 
   // NAV SCROLL, change nav links a color to smoke when scrolled
   const nav = document.getElementById('mainNav');
+  const navToggle = document.getElementById('navToggle');
+  const navOverlay = document.getElementById('navOverlay');
+  const navMenu = document.getElementById('navMenu');
+
+  function setMobileMenu(open) {
+    nav.classList.toggle('menu-open', open);
+    navOverlay.classList.toggle('visible', open);
+    document.body.classList.toggle('menu-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  navToggle.addEventListener('click', () => setMobileMenu(!nav.classList.contains('menu-open')));
+  navOverlay.addEventListener('click', () => setMobileMenu(false));
+  navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMobileMenu(false)));
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) setMobileMenu(false);
+  });
+
   window.addEventListener('scroll', ()=>{ nav.classList.toggle('scrolled', window.scrollY>60);
   });
 
