@@ -181,11 +181,11 @@
   .reveal-delay-3 { transition-delay: 0.36s; }
 
   .services-intro {
-    padding: 5rem 4rem 2rem;
-    background: var(--white);
+    padding: 0 4rem 3rem;
+    background: var(--paper);
   }
   .services-intro-inner {
-    max-width: 1320px;
+    max-width: 1080px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -210,7 +210,7 @@
 
   /* Philosophy / approach */
   .philosophy {
-    padding: 2rem 4rem 6rem;
+    padding: 5rem 4rem 6rem;
     background: var(--white);
     position: relative;
     overflow: hidden;
@@ -374,7 +374,7 @@
   .philosophy-closer em { font-style: italic; color: var(--steel); }
 
   .services-catalog {
-    padding: 3rem 4rem 8rem;
+    padding: 0 4rem 8rem;
     background: var(--paper);
   }
   .services-catalog-inner {
@@ -579,9 +579,7 @@
     nav.menu-open .nav-links { transform: translateX(0); }
     .nav-overlay { display: block; }
     .page-hero { padding: 8rem 1.5rem 3.5rem; min-height: 50vh; }
-    .services-intro { padding: 4rem 1.5rem 1.5rem; }
-    .services-intro-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-    .philosophy { padding: 2rem 1.5rem 4rem; }
+    .philosophy { padding: 4rem 1.5rem; }
     .philosophy::before { display: none; }
     .philosophy-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .philosophy-rail { position: static; }
@@ -600,7 +598,9 @@
     .philosophy-pillars li span { font-size: 0.85rem; width: auto; }
     .philosophy-columns { columns: 1; }
     .philosophy-cards { grid-template-columns: 1fr; }
-    .services-catalog { padding: 2rem 1.5rem 5rem; }
+    .services-intro { padding: 0 1.5rem 2rem; }
+    .services-intro-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .services-catalog { padding: 0 1.5rem 5rem; }
     .service-item,
     .service-item--reverse {
       grid-template-columns: 100px 1fr;
@@ -654,19 +654,6 @@
   </div>
 </header>
 
-<section class="services-intro">
-  <div class="services-intro-inner">
-    <div>
-      <div class="section-label reveal">
-        <div class="section-label-line"></div>
-        <span>Our Services</span>
-      </div>
-      <h2 class="reveal reveal-delay-1">Every layer of<br><em>exceptional</em> hospitality</h2>
-    </div>
-    <p class="reveal reveal-delay-2">From pre-opening strategy to daily operations refinement, we offer an integrated suite of management services tailored to the unique DNA of each property we steward.</p>
-  </div>
-</section>
-
 <section class="philosophy" aria-labelledby="philosophy-heading">
   <div class="philosophy-inner">
     <aside class="philosophy-rail reveal">
@@ -715,6 +702,19 @@
 
       <p class="philosophy-closer reveal reveal-delay-2">At Signature Hospitality Management, hospitality is not treated merely as an operation. It is a combination of <em>experience, strategy, aesthetics, and growth</em> — with the goal of creating projects that genuinely stand out in the market.</p>
     </div>
+  </div>
+</section>
+
+<section class="services-intro">
+  <div class="services-intro-inner">
+    <div>
+      <div class="section-label reveal">
+        <div class="section-label-line"></div>
+        <span>Our Services</span>
+      </div>
+      <h2 class="reveal reveal-delay-1">Every layer of<br><em>exceptional</em> hospitality</h2>
+    </div>
+    <p class="reveal reveal-delay-2">From pre-opening strategy to daily operations refinement, we offer an integrated suite of management services tailored to the unique DNA of each property we steward.</p>
   </div>
 </section>
 
