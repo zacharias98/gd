@@ -977,6 +977,7 @@
     margin-top: 0.4rem;
   }
   .form-submit:hover { background: var(--steel); }
+  .form-submit:disabled { opacity: 0.75; cursor: not-allowed; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 
   /* ─── FOOTER ──────────────────────────────────────────── */
@@ -1551,15 +1552,15 @@
     <p class="reveal reveal-delay-2">Whether you're opening a new property, repositioning an existing asset, or seeking a management partner who shares your exacting standards, we would welcome the conversation.</p>
     <a href="mailto:info@gdsignature.com" class="btn-ghost-email reveal reveal-delay-3">info@gdsignature.com</a>
   </div>
-  <div class="cta-form-block reveal reveal-delay-2">
+  <form id="contact-form" class="cta-form-block reveal reveal-delay-2" novalidate>
     <div class="form-grid">
-      <div class="form-row"><label>First Name</label><input type="text" placeholder="Alexandre"></div>
-      <div class="form-row"><label>Last Name</label><input type="text" placeholder="Moreau"></div>
+      <div class="form-row"><label for="first_name">First Name</label><input id="first_name" name="first_name" type="text" placeholder="Alexandre" required></div>
+      <div class="form-row"><label for="last_name">Last Name</label><input id="last_name" name="last_name" type="text" placeholder="Moreau" required></div>
     </div>
-    <div class="form-row"><label>Email Address</label><input type="email" placeholder="alex@yourproperty.com"></div>
+    <div class="form-row"><label for="email">Email Address</label><input id="email" name="email" type="email" placeholder="alex@yourproperty.com" required></div>
     <div class="form-row">
-      <label>Property Type</label>
-      <select>
+      <label for="property_type">Property Type</label>
+      <select id="property_type" name="property_type" required>
         <option value="">Select a property type</option>
         <option>Boutique Hotel (under 50 rooms)</option>
         <option>City Hotel (50–200 rooms)</option>
@@ -1568,10 +1569,10 @@
         <option>New Development</option>
       </select>
     </div>
-    <div class="form-row"><label>Property Size (m²)</label><input type="number" min="1" step="1" placeholder="e.g. 850"></div>
-    <div class="form-row"><label>How can we help?</label><textarea placeholder="Tell us about your property and objectives…"></textarea></div>
-    <button class="form-submit">Send Inquiry →</button>
-  </div>
+    <div class="form-row"><label for="property_size">Property Size (m²)</label><input id="property_size" name="property_size" type="number" min="1" step="1" placeholder="e.g. 850"></div>
+    <div class="form-row"><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Tell us about your property and objectives…" required></textarea></div>
+    <button type="submit" class="form-submit">Send Inquiry →</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -1688,15 +1689,6 @@
     if(heroCircle) heroCircle.style.transform=`translateY(calc(-50% + ${sy*0.12}px))`;
   });
 
-  // FORM FEEDBACK
-  const btn=document.querySelector('.form-submit');
-  if(btn) btn.addEventListener('click',function(){
-    const orig=this.textContent;
-    this.textContent='Message Sent ✓';
-    this.style.background='#3E6B4F'; this.style.color='#fff';
-    setTimeout(()=>{ this.textContent=orig; this.style.background=''; this.style.color=''; },3000);
-  });
-
   // SMOOTH SCROLL
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
@@ -1705,5 +1697,8 @@
     });
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/emailjs-config.js"></script>
+<script src="js/contact-form.js"></script>
 </body>
 </html>

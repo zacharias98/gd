@@ -978,6 +978,7 @@
     margin-top: 0.4rem;
   }
   .form-submit:hover { background: var(--steel); }
+  .form-submit:disabled { opacity: 0.75; cursor: not-allowed; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 
   /* ─── FOOTER ──────────────────────────────────────────── */
@@ -1554,15 +1555,15 @@
     <p class="reveal reveal-delay-2">Είτε ανοίγετε νέο boutique ξενοδοχείο, είτε αναθέτετε υπάρχον resort ή villa, είτε αναζητάτε εταιρεία διαχείρισης φιλοξενίας με υψηλά standards — επικοινωνήστε με την GD Signature.</p>
     <a href="mailto:info@gdsignature.com" class="btn-ghost-email reveal reveal-delay-3">info@gdsignature.com</a>
   </div>
-  <div class="cta-form-block reveal reveal-delay-2">
+  <form id="contact-form" class="cta-form-block reveal reveal-delay-2" novalidate>
     <div class="form-grid">
-      <div class="form-row"><label>Όνομα</label><input type="text" placeholder="Γιώργος"></div>
-      <div class="form-row"><label>Επώνυμο</label><input type="text" placeholder="Δαμιανάκης"></div>
+      <div class="form-row"><label for="first_name">Όνομα</label><input id="first_name" name="first_name" type="text" placeholder="Γιώργος" required></div>
+      <div class="form-row"><label for="last_name">Επώνυμο</label><input id="last_name" name="last_name" type="text" placeholder="Δαμιανάκης" required></div>
     </div>
-    <div class="form-row"><label>Email</label><input type="email" placeholder="info@to-katalyma-sas.gr"></div>
+    <div class="form-row"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="info@to-katalyma-sas.gr" required></div>
     <div class="form-row">
-      <label>Τύπος καταλύματος</label>
-      <select>
+      <label for="property_type">Τύπος καταλύματος</label>
+      <select id="property_type" name="property_type" required>
         <option value="">Επιλέξτε τύπο καταλύματος</option>
         <option>Boutique ξενοδοχείο (έως 50 δωμάτια)</option>
         <option>Αστικό ξενοδοχείο (50–200 δωμάτια)</option>
@@ -1571,10 +1572,10 @@
         <option>Νέα ανάπτυξη</option>
       </select>
     </div>
-    <div class="form-row"><label>Εμβαδόν καταλύματος (τ.μ.)</label><input type="number" min="1" step="1" placeholder="π.χ. 850"></div>
-    <div class="form-row"><label>Πώς μπορούμε να βοηθήσουμε;</label><textarea placeholder="Περιγράψτε το ξενοδοχείο ή κατάλυμά σας, την τοποθεσία και τους στόχους σας (π.χ. απευθείας κρατήσεις, OTA, branding)…"></textarea></div>
-    <button class="form-submit">Αποστολή αιτήματος →</button>
-  </div>
+    <div class="form-row"><label for="property_size">Εμβαδόν καταλύματος (τ.μ.)</label><input id="property_size" name="property_size" type="number" min="1" step="1" placeholder="π.χ. 850"></div>
+    <div class="form-row"><label for="message">Πώς μπορούμε να βοηθήσουμε;</label><textarea id="message" name="message" placeholder="Περιγράψτε το ξενοδοχείο ή κατάλυμά σας, την τοποθεσία και τους στόχους σας (π.χ. απευθείας κρατήσεις, OTA, branding)…" required></textarea></div>
+    <button type="submit" class="form-submit">Αποστολή αιτήματος →</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -1691,15 +1692,6 @@
     if(heroCircle) heroCircle.style.transform=`translateY(calc(-50% + ${sy*0.12}px))`;
   });
 
-  // FORM FEEDBACK
-  const btn=document.querySelector('.form-submit');
-  if(btn) btn.addEventListener('click',function(){
-    const orig=this.textContent;
-    this.textContent='Το μήνυμα εστάλη ✓';
-    this.style.background='#3E6B4F'; this.style.color='#fff';
-    setTimeout(()=>{ this.textContent=orig; this.style.background=''; this.style.color=''; },3000);
-  });
-
   // SMOOTH SCROLL
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
@@ -1708,5 +1700,8 @@
     });
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/emailjs-config.js"></script>
+<script src="js/contact-form.js"></script>
 </body>
 </html>
