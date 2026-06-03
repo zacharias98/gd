@@ -617,7 +617,7 @@
     overflow: hidden;
     transition: background 0.4s var(--ease);
     display: grid;
-    grid-template-columns: 2.5rem 36px 1fr auto;
+    grid-template-columns: min-content 36px 1fr auto;
     align-items: center;
     gap: 0 1.25rem;
   }
@@ -659,7 +659,7 @@
   }
   .service-icon {
     width: 36px; height: 36px;
-    margin: 0;
+    margin: 0 0 0 -0.85rem;
     color: var(--steel);
     opacity: 0.85;
     transition: opacity 0.3s, transform 0.4s var(--ease);
