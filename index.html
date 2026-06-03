@@ -102,6 +102,21 @@
     border-color: var(--steel) !important;
   }
   nav.scrolled .nav-cta:hover { background: var(--steel) !important; color: var(--white) !important; }
+  nav.scrolled .nav-lang {
+    color: var(--steel) !important;
+    border-color: rgba(74,111,165,0.35) !important;
+  }
+  nav.scrolled .nav-lang:hover { background: var(--steel) !important; color: var(--white) !important; }
+  .nav-lang {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.18em !important;
+    color: var(--paper) !important;
+    border: 1px solid var(--paper) !important;
+    padding: 0.45rem 0.9rem !important;
+    transition: background 0.3s, color 0.3s, border-color 0.3s !important;
+  }
+  .nav-lang::after { display: none !important; }
+  .nav-lang:hover { background: var(--steel) !important; color: var(--white) !important; border-color: var(--steel) !important; }
   .nav-logo {
     display: flex; align-items: center; gap: 0.8rem;
     text-decoration: none;
@@ -1276,6 +1291,7 @@
     <li><a href="about-us-gr.html">Η Εταιρεία</a></li>
     <li><a href="services-gr.html">Υπηρεσίες</a></li>
     <li><a href="portfolio-gr.html">Portfolio</a></li>
+    <li><a href="en.html" class="nav-lang" hreflang="en" lang="en" title="English version">EN</a></li>
     <li><a href="#contact" class="nav-cta">Επικοινωνία</a></li>
   </ul>
 </nav>
