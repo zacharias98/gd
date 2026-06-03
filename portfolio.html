@@ -433,17 +433,18 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-toggle { display: flex; }
+    .nav-logo img { height: 48px; }
     .nav-links {
-      position: fixed; top: 0; right: 0; bottom: 0;
-      width: min(320px, 85vw);
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2rem;
-      padding: 5.5rem 2.5rem 2.5rem;
+      position: fixed; top: 0; right: 0;
+      width: min(320px, 88vw); height: 100vh;
+      flex-direction: column; justify-content: center;
+      align-items: flex-start; gap: 2rem;
+      padding: 2rem 2.5rem;
       background: var(--white);
       transform: translateX(100%);
       transition: transform 0.45s var(--ease);
       box-shadow: -8px 0 40px rgba(26,36,48,0.08);
+      z-index: 99;
     }
     nav.menu-open .nav-links { transform: translateX(0); }
     .nav-overlay { display: block; }
@@ -455,6 +456,7 @@
       color: var(--steel) !important;
       border-color: var(--steel) !important;
     }
+    body.menu-open { overflow: hidden; }
     .page-hero { padding: 8rem 1.5rem 3.5rem; min-height: 50vh; }
     .portfolio-main { padding: 4rem 1.5rem 5rem; }
     .property-grid { grid-template-columns: 1fr; }
