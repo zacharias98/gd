@@ -217,6 +217,69 @@
   .services-intro .section-label-line { background: var(--steel); }
   .services-intro .section-label span { color: var(--steel); }
 
+  /* Partners logo marquee */
+  .partners-marquee {
+    padding: 2.5rem 0 3.5rem;
+    background: var(--white);
+    border-top: 1px solid rgba(43,58,74,0.06);
+    overflow: hidden;
+  }
+  .partners-marquee-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0 4rem;
+  }
+  .partners-marquee-header span {
+    font-size: 0.52rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--platinum);
+    font-weight: 400;
+  }
+  .partners-marquee-viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+  .partners-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: partners-marquee 42s linear infinite;
+  }
+  .partners-marquee-track:hover { animation-play-state: paused; }
+  .partners-marquee-set {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    padding: 0 2.5rem;
+  }
+  .partners-marquee-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 44px;
+  }
+  .partners-marquee-item img {
+    max-width: 100%;
+    max-height: 36px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: opacity 0.4s, filter 0.4s;
+  }
+  .partners-marquee-item:hover img {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+  @keyframes partners-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
   /* Philosophy / approach */
   .philosophy {
     padding: 5rem 4rem 6rem;
@@ -619,6 +682,11 @@
     .philosophy-cards { grid-template-columns: 1fr; }
     .services-intro { padding: 0 1.5rem 2rem; }
     .services-intro-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .partners-marquee { padding: 2rem 0 2.5rem; }
+    .partners-marquee-header { margin-bottom: 1.5rem; padding: 0 1.5rem; }
+    .partners-marquee-set { gap: 3rem; }
+    .partners-marquee-item { width: 120px; height: 38px; }
+    .partners-marquee-item img { max-height: 30px; }
     .services-catalog { padding: 0 1.5rem 5rem; }
     .service-item,
     .service-item--reverse {
@@ -721,6 +789,32 @@
       </div>
 
       <p class="philosophy-closer reveal reveal-delay-2">At Signature Hospitality Management, hospitality is not treated merely as an operation. It is a combination of <em>experience, strategy, aesthetics, and growth</em> — with the goal of creating projects that genuinely stand out in the market.</p>
+    </div>
+  </div>
+</section>
+
+<section class="partners-marquee" aria-label="Partner platforms">
+  <div class="partners-marquee-header reveal">
+    <span>Platforms We Work With</span>
+  </div>
+  <div class="partners-marquee-viewport" aria-hidden="true">
+    <div class="partners-marquee-track">
+      <div class="partners-marquee-set">
+        <div class="partners-marquee-item"><img src="assets/partners/booking.svg" alt="Booking.com" width="150" height="25" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/airbnb.svg" alt="Airbnb" width="130" height="40" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/expedia.svg" alt="Expedia" width="140" height="40" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/homeaway.svg" alt="HomeAway" width="150" height="28" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/webhotelier.svg" alt="WebHotelier" width="145" height="30" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/hotelizer.svg" alt="Hotelizer" width="130" height="36" loading="lazy"></div>
+      </div>
+      <div class="partners-marquee-set">
+        <div class="partners-marquee-item"><img src="assets/partners/booking.svg" alt="" width="150" height="25" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/airbnb.svg" alt="" width="130" height="40" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/expedia.svg" alt="" width="140" height="40" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/homeaway.svg" alt="" width="150" height="28" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/webhotelier.svg" alt="" width="145" height="30" loading="lazy"></div>
+        <div class="partners-marquee-item"><img src="assets/partners/hotelizer.svg" alt="" width="130" height="36" loading="lazy"></div>
+      </div>
     </div>
   </div>
 </section>
