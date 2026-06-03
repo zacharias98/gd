@@ -979,6 +979,8 @@
   }
   .form-submit:hover { background: var(--steel); }
   .form-submit:disabled { opacity: 0.75; cursor: not-allowed; }
+  .form-recaptcha { margin-bottom: 1rem; }
+  .form-recaptcha #recaptcha-container { transform-origin: 0 0; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 
   /* ─── FOOTER ──────────────────────────────────────────── */
@@ -1228,6 +1230,7 @@
     .cta-section { padding: 5rem 1.5rem; gap: 3rem; }
     .cta-section::before, .cta-section::after { display: none; }
     .form-grid { grid-template-columns: 1fr; }
+    .form-recaptcha #recaptcha-container { transform: scale(0.92); }
     .form-row input,
     .form-row select,
     .form-row textarea { font-size: 16px; }
@@ -1574,6 +1577,7 @@
     </div>
     <div class="form-row"><label for="property_size">Εμβαδόν καταλύματος (τ.μ.)</label><input id="property_size" name="property_size" type="number" min="1" step="1" placeholder="π.χ. 850"></div>
     <div class="form-row"><label for="message">Πώς μπορούμε να βοηθήσουμε;</label><textarea id="message" name="message" placeholder="Περιγράψτε το ξενοδοχείο ή κατάλυμά σας, την τοποθεσία και τους στόχους σας (π.χ. απευθείας κρατήσεις, OTA, branding)…" required></textarea></div>
+    <div class="form-row form-recaptcha"><div id="recaptcha-container" aria-label="Επαλήθευση reCAPTCHA"></div></div>
     <button type="submit" class="form-submit">Αποστολή αιτήματος →</button>
   </form>
 </section>

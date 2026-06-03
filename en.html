@@ -978,6 +978,8 @@
   }
   .form-submit:hover { background: var(--steel); }
   .form-submit:disabled { opacity: 0.75; cursor: not-allowed; }
+  .form-recaptcha { margin-bottom: 1rem; }
+  .form-recaptcha #recaptcha-container { transform-origin: 0 0; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 
   /* ─── FOOTER ──────────────────────────────────────────── */
@@ -1227,6 +1229,7 @@
     .cta-section { padding: 5rem 1.5rem; gap: 3rem; }
     .cta-section::before, .cta-section::after { display: none; }
     .form-grid { grid-template-columns: 1fr; }
+    .form-recaptcha #recaptcha-container { transform: scale(0.92); }
     .form-row input,
     .form-row select,
     .form-row textarea { font-size: 16px; }
@@ -1571,6 +1574,7 @@
     </div>
     <div class="form-row"><label for="property_size">Property Size (m²)</label><input id="property_size" name="property_size" type="number" min="1" step="1" placeholder="e.g. 850"></div>
     <div class="form-row"><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Tell us about your property and objectives…" required></textarea></div>
+    <div class="form-row form-recaptcha"><div id="recaptcha-container" aria-label="reCAPTCHA verification"></div></div>
     <button type="submit" class="form-submit">Send Inquiry →</button>
   </form>
 </section>
