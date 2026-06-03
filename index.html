@@ -517,7 +517,7 @@
     background: var(--white);
   }
   .about-text p {
-    font-size: 0.74rem;
+    font-size: 0.9rem;
     line-height: 2;
     color: var(--smoke);
     margin-top: 1.8rem;
@@ -583,14 +583,14 @@
     margin-bottom: 3.5rem;
   }
   .services-header p {
-    font-size: 0.74rem;
+    font-size: 0.9rem;
     line-height: 2;
     color: var(--smoke);
     padding-bottom: 0.3rem;
   }
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     border: 1px solid rgba(43,58,74,0.1);
     background: rgba(43,58,74,0.1);
@@ -728,16 +728,27 @@
     margin-bottom: 5rem;
   }
   .portfolio-link {
-    font-size: 0.58rem;
-    letter-spacing: 0.25em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--steel);
+    font-weight: 500;
+    color: var(--white);
     text-decoration: none;
-    border-bottom: 1px solid rgba(74,111,165,0.3);
-    padding-bottom: 0.2rem;
-    transition: border-color 0.3s;
+    background: var(--steel);
+    padding: 1.15rem 2.6rem;
+    box-shadow: 0 4px 28px rgba(74, 111, 165, 0.4);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s, gap 0.3s;
   }
-  .portfolio-link:hover { border-color: var(--steel); }
+  .portfolio-link:hover {
+    background: var(--slate);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 36px rgba(74, 111, 165, 0.5);
+    gap: 1.1rem;
+  }
   .portfolio-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -811,56 +822,6 @@
     z-index: 2;
   }
   .portfolio-item:hover::before { width: 60px; }
-
-  /* ─── TESTIMONIAL ─────────────────────────────────────── */
-  .testimonial-section {
-    padding: 10rem 4rem;
-    background: var(--slate);
-    position: relative;
-    overflow: hidden;
-  }
-  .testimonial-section::before {
-    content: '"';
-    position: absolute; top: 2rem; left: 2rem;
-    font-family: var(--serif);
-    font-size: 28rem;
-    color: rgba(74,111,165,0.08);
-    line-height: 1;
-    pointer-events: none;
-  }
-  .testimonial-inner {
-    max-width: 860px; margin: 0 auto;
-    text-align: center; position: relative; z-index:1;
-  }
-  .testimonial-section .section-label { justify-content: center; }
-  .testimonial-section .section-label-line { background: var(--steel-lt); }
-  .testimonial-section .section-label span { color: var(--steel-lt); }
-  .testimonial-text {
-    font-family: var(--serif);
-    font-size: clamp(1.7rem, 3vw, 3rem);
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.55;
-    color: rgba(244,243,240,0.9);
-    margin-bottom: 3rem;
-    transition: opacity 0.4s, transform 0.4s;
-  }
-  .testimonial-text em { color: var(--steel-lt); font-style: normal; }
-  .testimonial-divider { width: 36px; height:1px; background: var(--steel-lt); margin: 0 auto 1.5rem; }
-  .testimonial-author {
-    font-size: 0.55rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--platinum);
-  }
-  .testimonial-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 3rem; }
-  .testimonial-dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: rgba(184,191,200,0.3);
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-  }
-  .testimonial-dot.active { background: var(--steel-lt); transform: scale(1.4); }
 
   /* ─── PROCESS ─────────────────────────────────────────── */
   .process {
@@ -1225,6 +1186,11 @@
       gap: 1.5rem;
       margin-bottom: 3rem;
     }
+    .portfolio-link {
+      width: 100%;
+      justify-content: center;
+      padding: 1.25rem 2rem;
+    }
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item:first-child {
       grid-row: auto;
@@ -1233,10 +1199,6 @@
     .portfolio-item:not(:first-child) { min-height: 260px; }
     .portfolio-item-info { padding: 1.75rem; transform: none; }
     .portfolio-item-name { font-size: 1.6rem; }
-    .testimonial-section { padding: 5rem 1.5rem; }
-    .testimonial-section::before { font-size: 12rem; top: 1rem; left: 0.5rem; }
-    .testimonial-text { font-size: clamp(1.25rem, 5vw, 1.7rem); margin-bottom: 2rem; }
-    .testimonial-author { font-size: 0.5rem; letter-spacing: 0.2em; line-height: 1.6; }
     .process { padding: 5rem 1.5rem; }
     .process-header { margin-bottom: 3rem; }
     .process-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem 1.5rem; }
@@ -1271,11 +1233,11 @@
     .hero-stat { border-right: none !important; border-bottom: 1px solid rgba(43, 58, 74, 0.1); }
     .hero-stat:last-child { border-bottom: none; }
     .section-title { font-size: clamp(2rem, 9vw, 2.6rem); }
-    .about, .services, .portfolio, .testimonial-section, .process, .cta-section {
+    .about, .services, .portfolio, .process, .cta-section {
       padding-top: 4rem;
       padding-bottom: 4rem;
     }
-    .about, .services, .portfolio, .testimonial-section, .process, .cta-section {
+    .about, .services, .portfolio, .process, .cta-section {
       padding-left: 1.25rem;
       padding-right: 1.25rem;
     }
@@ -1396,28 +1358,27 @@
     <div class="service-card reveal">
       <span class="service-num">01</span>
       <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
-        <rect x="6" y="14" width="32" height="22" rx="1"/><path d="M14 14V10a8 8 0 0116 0v4"/>
-        <circle cx="22" cy="25" r="3"/><path d="M22 28v4"/>
+        <rect x="8" y="8" width="28" height="28" rx="2"/>
+        <path d="M8 16h28M16 8v8M28 8v8"/><path d="M14 24h6m0 0l-2-2m2 2l-2 2M24 30h6m-6 0l2-2m-2 2l2 2"/>
       </svg>
-      <div class="service-name">Hotel Operations Management</div>
-      <a href="services.html#operations" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <div class="service-name">Strategic Development of Hospitality Projects</div>
+      <a href="services.html#strategy-development" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-1">
       <span class="service-num">02</span>
       <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
         <path d="M8 36V16l14-8 14 8v20"/><path d="M16 36v-8h12v8"/><path d="M14 20h4m8 0h4M14 26h4m8 0h4"/>
       </svg>
-      <div class="service-name">Asset & Revenue Strategy</div>
-      <a href="services.html#revenue" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <div class="service-name">OTA & Revenue Management</div>
+      <a href="services.html#ota-revenue" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-2">
       <span class="service-num">03</span>
       <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
-        <circle cx="22" cy="16" r="6"/><path d="M10 36c0-6.627 5.373-12 12-12s12 5.373 12 12"/>
-        <path d="M32 10c2.2 1.6 4 4.3 4 7M12 10C9.8 11.6 8 14.3 8 17"/>
+        <path d="M6 22h32M28 14l8 8-8 8"/>
       </svg>
-      <div class="service-name">Talent & Culture Development</div>
-      <a href="services.html#talent" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <div class="service-name">Direct Booking Growth Strategy</div>
+      <a href="services.html#direct-booking" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-3">
       <span class="service-num">04</span>
@@ -1425,26 +1386,49 @@
         <path d="M22 6l4 8 9 1.3-6.5 6.3 1.5 9L22 26l-8 4.6 1.5-9L9 15.3 18 14z"/>
         <circle cx="22" cy="22" r="16"/>
       </svg>
-      <div class="service-name">Brand & Guest Experience</div>
-      <a href="services.html#brand" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <div class="service-name">Guest Experience & Hospitality Standards</div>
+      <a href="services.html#guest-experience" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-1">
       <span class="service-num">05</span>
       <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
-        <rect x="8" y="8" width="28" height="28" rx="2"/>
-        <path d="M8 16h28M16 8v8M28 8v8"/><path d="M14 24h6m0 0l-2-2m2 2l-2 2M24 30h6m-6 0l2-2m-2 2l2 2"/>
+        <circle cx="22" cy="18" r="8"/><path d="M10 36c2-6 6-10 12-10s10 4 12 10"/>
       </svg>
-      <div class="service-name">Pre-Opening & Development</div>
-      <a href="services.html#preopening" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <div class="service-name">Branding & Visual Identity</div>
+      <a href="services.html#branding" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
     <div class="service-card reveal reveal-delay-2">
       <span class="service-num">06</span>
       <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
-        <path d="M10 34c0-8 4-14 12-14s12 6 12 14"/><path d="M22 20V10"/>
-        <path d="M16 14l6-4 6 4"/><ellipse cx="22" cy="8" rx="4" ry="2"/>
+        <path d="M8 32V18l14-6 14 6v14"/><path d="M16 32v-6h12v6"/>
       </svg>
-      <div class="service-name">Sustainability & ESG Programs</div>
-      <a href="services.html#sustainability" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+      <div class="service-name">Pricing Proposal & Strategy</div>
+      <a href="services.html#pricing-strategy" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <span class="service-num">07</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="10" y="14" width="24" height="18" rx="2"/><circle cx="22" cy="23" r="5"/><path d="M16 10l3-4h6l3 4"/>
+      </svg>
+      <div class="service-name">Photography & Visual Presentation</div>
+      <a href="services.html#photography" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <span class="service-num">08</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="22" cy="16" r="6"/><path d="M10 36c0-6.627 5.373-12 12-12s12 5.373 12 12"/>
+        <path d="M32 10c2.2 1.6 4 4.3 4 7M12 10C9.8 11.6 8 14.3 8 17"/>
+      </svg>
+      <div class="service-name">24/7 Guest Support</div>
+      <a href="services.html#guest-support" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-num">09</span>
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="6" y="10" width="32" height="24" rx="2"/><path d="M6 18h32M14 26h6m4 0h6"/>
+      </svg>
+      <div class="service-name">Website Development & Direct Booking Foundation</div>
+      <a href="services.html#website-development" class="service-link">Discover More <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
     </div>
   </div>
 </section>
@@ -1452,22 +1436,24 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span>Hotel Management</span><span class="sep">◆</span>
-    <span>Revenue Optimization</span><span class="sep">◆</span>
+    <span>Strategic Development</span><span class="sep">◆</span>
+    <span>OTA & Revenue Management</span><span class="sep">◆</span>
+    <span>Direct Booking Growth</span><span class="sep">◆</span>
     <span>Guest Experience</span><span class="sep">◆</span>
-    <span>Luxury Consulting</span><span class="sep">◆</span>
-    <span>Resort Operations</span><span class="sep">◆</span>
-    <span>Talent Development</span><span class="sep">◆</span>
-    <span>Brand Strategy</span><span class="sep">◆</span>
-    <span>Pre-Opening Services</span><span class="sep">◆</span>
-    <span>Hotel Management</span><span class="sep">◆</span>
-    <span>Revenue Optimization</span><span class="sep">◆</span>
+    <span>Branding & Visual Identity</span><span class="sep">◆</span>
+    <span>Pricing Strategy</span><span class="sep">◆</span>
+    <span>Photography & Presentation</span><span class="sep">◆</span>
+    <span>24/7 Guest Support</span><span class="sep">◆</span>
+    <span>Website & Direct Booking</span><span class="sep">◆</span>
+    <span>Strategic Development</span><span class="sep">◆</span>
+    <span>OTA & Revenue Management</span><span class="sep">◆</span>
+    <span>Direct Booking Growth</span><span class="sep">◆</span>
     <span>Guest Experience</span><span class="sep">◆</span>
-    <span>Luxury Consulting</span><span class="sep">◆</span>
-    <span>Resort Operations</span><span class="sep">◆</span>
-    <span>Talent Development</span><span class="sep">◆</span>
-    <span>Brand Strategy</span><span class="sep">◆</span>
-    <span>Pre-Opening Services</span><span class="sep">◆</span>
+    <span>Branding & Visual Identity</span><span class="sep">◆</span>
+    <span>Pricing Strategy</span><span class="sep">◆</span>
+    <span>Photography & Presentation</span><span class="sep">◆</span>
+    <span>24/7 Guest Support</span><span class="sep">◆</span>
+    <span>Website & Direct Booking</span><span class="sep">◆</span>
   </div>
 </div>
 
@@ -1508,27 +1494,6 @@
         <div class="portfolio-item-loc">Courchevel, France — Private Chalet</div>
       </div>
     </a>
-  </div>
-</section>
-
-<!-- TESTIMONIAL -->
-<section class="testimonial-section">
-  <div class="testimonial-inner">
-    <div class="section-label reveal" style="justify-content:center;">
-      <div class="section-label-line"></div>
-      <span>Client Voices</span>
-      <div class="section-label-line"></div>
-    </div>
-    <p class="testimonial-text reveal reveal-delay-1" id="testimonialText">
-      "Aurum transformed our property from a well-regarded hotel into <em>a destination</em>. Guest satisfaction scores climbed 34% within six months. Their team doesn't manage — they <em>elevate</em>."
-    </p>
-    <div class="testimonial-divider reveal reveal-delay-2"></div>
-    <div class="testimonial-author reveal reveal-delay-3" id="testimonialAuthor">MARCO FABRIZI — OWNER, PALAZZO VENEZIA RESORT</div>
-    <div class="testimonial-dots">
-      <div class="testimonial-dot active" data-idx="0"></div>
-      <div class="testimonial-dot" data-idx="1"></div>
-      <div class="testimonial-dot" data-idx="2"></div>
-    </div>
   </div>
 </section>
 
@@ -1683,34 +1648,6 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
   },{ threshold:0.1, rootMargin:'0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-  // TESTIMONIALS
-  const testimonials = [
-    { text:`"Aurum transformed our property from a well-regarded hotel into <em>a destination</em>. Guest satisfaction scores climbed 34% within six months. Their team doesn't manage — they <em>elevate</em>."`, author:'MARCO FABRIZI — OWNER, PALAZZO VENEZIA RESORT' },
-    { text:`"The pre-opening support was <em>extraordinary</em>. They anticipated challenges we hadn't even considered. Our soft opening was the smoothest in our portfolio's history."`, author:'CLAIRE DRUMMOND — CEO, BOREAL HOTEL GROUP' },
-    { text:`"Revenue per available room increased by <em>28% in year one</em>. More importantly, the culture they built in our team has lasted. We genuinely feel they are partners, not vendors."`, author:'SHEIKH TARIQ AL-FAROUK — PRINCIPAL, AL SARAY RESORTS' }
-  ];
-  let activeIdx=0;
-  const textEl=document.getElementById('testimonialText');
-  const authorEl=document.getElementById('testimonialAuthor');
-  const dots=document.querySelectorAll('.testimonial-dot');
-  function switchTestimonial(idx){
-    textEl.style.opacity='0'; textEl.style.transform='translateY(10px)';
-    authorEl.style.opacity='0';
-    setTimeout(()=>{
-      textEl.innerHTML=testimonials[idx].text;
-      authorEl.textContent=testimonials[idx].author;
-      textEl.style.transition='opacity 0.6s ease, transform 0.6s ease';
-      authorEl.style.transition='opacity 0.6s ease 0.1s';
-      textEl.style.opacity='1'; textEl.style.transform='translateY(0)';
-      authorEl.style.opacity='1';
-    },350);
-    dots.forEach(d=>d.classList.remove('active'));
-    dots[idx].classList.add('active');
-    activeIdx=idx;
-  }
-  dots.forEach(d=>d.addEventListener('click',()=>switchTestimonial(+d.dataset.idx)));
-  setInterval(()=>switchTestimonial((activeIdx+1)%testimonials.length),6000);
 
   // HERO CAROUSEL
   const carouselSlides=document.querySelectorAll('.hero-carousel-slide');
