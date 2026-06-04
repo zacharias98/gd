@@ -247,7 +247,6 @@
     width: max-content;
     animation: partners-marquee 42s linear infinite;
   }
-  .partners-marquee-track:hover { animation-play-state: paused; }
   .partners-marquee-set {
     display: flex;
     align-items: center;
@@ -268,13 +267,8 @@
     width: auto;
     height: auto;
     object-fit: contain;
-    opacity: 0.5;
-    filter: grayscale(100%);
-    transition: opacity 0.4s, filter 0.4s;
-  }
-  .partners-marquee-item:hover img {
     opacity: 1;
-    filter: grayscale(0%);
+    filter: none;
   }
   @keyframes partners-marquee {
     from { transform: translateX(0); }
