@@ -1561,16 +1561,19 @@
       <div class="form-row"><label for="first_name">First Name</label><input id="first_name" name="first_name" type="text" placeholder="Alexandre" required></div>
       <div class="form-row"><label for="last_name">Last Name</label><input id="last_name" name="last_name" type="text" placeholder="Moreau" required></div>
     </div>
-    <div class="form-row"><label for="email">Email Address</label><input id="email" name="email" type="email" placeholder="alex@yourproperty.com" required></div>
+    <div class="form-grid">
+      <div class="form-row"><label for="email">Email Address</label><input id="email" name="email" type="email" placeholder="alex@yourproperty.com" required></div>
+      <div class="form-row"><label for="phone">Telephone</label><input id="phone" name="phone" type="tel" placeholder="+30 210 123 4567" required></div>
+    </div>
+    <div class="form-row"><label for="property_area">Property Area</label><input id="property_area" name="property_area" type="text" placeholder="e.g. Crete, Chania" required></div>
     <div class="form-row">
       <label for="property_type">Property Type</label>
       <select id="property_type" name="property_type" required>
         <option value="">Select a property type</option>
-        <option>Boutique Hotel (under 50 rooms)</option>
-        <option>City Hotel (50–200 rooms)</option>
-        <option>Luxury Resort</option>
-        <option>Private Villa / Estate</option>
-        <option>New Development</option>
+        <option>Villa</option>
+        <option>Boutique hotel (up to 10 bedrooms)</option>
+        <option>Boutique hotel (more than 10 bedrooms)</option>
+        <option>New project</option>
       </select>
     </div>
     <div class="form-row"><label for="property_size">Property Size (m²)</label><input id="property_size" name="property_size" type="number" min="1" step="1" placeholder="e.g. 850"></div>
