@@ -9,8 +9,9 @@
  * Use the site key here. Optionally add the secret key under EmailJS → Account → Security.
  */
 window.EMAILJS_CONFIG = {
-  publicKey: 'YOUR_PUBLIC_KEY',
-  serviceId: 'YOUR_SERVICE_ID',
-  templateId: 'YOUR_TEMPLATE_ID',
-  recaptchaSiteKey: 'YOUR_RECAPTCHA_SITE_KEY',
+  publicKey: 'Ny0D2uaMXlg-9ZZrs',
+  serviceId: 'service_5nukpow',
+  // templateId: 'template_sweacst',
+  templateId: 'template_8xyk06t',
+  recaptchaSiteKey: '6LfYARQtAAAAAKGdo2aBBXPkNzgzrTsHkwKvm0rO',
 };
