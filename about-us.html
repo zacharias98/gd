@@ -195,7 +195,7 @@
 
   /* Founder intro */
   .founder-intro {
-    padding: 6rem 4rem;
+    padding: 6rem 4rem 7rem;
     background: var(--white);
   }
   .founder-intro-inner {
@@ -268,85 +268,81 @@
   }
   .founder-intro-text .section-label-line { background: var(--steel); }
   .founder-intro-text .section-label span { color: var(--steel); }
-
-  /* Story */
-  .story {
-    padding: 5rem 4rem 7rem;
-    background: var(--paper);
-    position: relative;
-  }
-  .story-inner {
-    max-width: 1320px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr minmax(400px, 44%);
-    gap: 4rem 5rem;
-    align-items: start;
-  }
-  .story-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-  }
-  .story-aside {
-    position: sticky;
-    top: 6.5rem;
-    align-self: start;
-  }
-  .story-block h3 {
+  .founder-lead {
     font-family: var(--serif);
-    font-size: 1.6rem;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
     font-weight: 300;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--slate);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(43,58,74,0.1);
   }
-  .story-block p {
-    font-size: 0.9rem;
-    line-height: 2;
-    color: var(--smoke);
-    margin-bottom: 1.2rem;
-  }
-  .story-block p:last-child { margin-bottom: 0; }
-  .story-visual {
+  .founder-education {
     position: relative;
-    height: 100%;
+    padding: 1.6rem 1.8rem 1.6rem 2.2rem;
+    background: var(--porcelain);
+    margin-bottom: 1.8rem;
   }
-  .story-visual img {
-    width: 100%;
-    height: min(78vh, 680px);
-    min-height: 520px;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border: 1px solid rgba(43,58,74,0.08);
-    box-shadow: 28px 28px 0 var(--linen);
-  }
-  .story-visual-label {
+  .founder-education::before {
+    content: '';
     position: absolute;
-    top: 1.2rem; left: -1.2rem;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-size: 0.48rem;
-    letter-spacing: 0.35em;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--steel) 0%, var(--steel-lt) 100%);
+  }
+  .founder-education p {
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: var(--slate);
+    margin: 0;
+  }
+  .founder-education strong {
+    display: block;
+    font-size: 0.5rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--steel);
     font-weight: 500;
+    margin-bottom: 0.5rem;
   }
-  .story-highlight {
-    padding: 2.5rem 3rem;
-    background: var(--white);
-    border-left: 3px solid var(--steel);
+  .founder-manifesto {
+    position: relative;
+    padding: 2.2rem 2.4rem;
+    background: var(--ink);
     margin-top: 0.5rem;
+    overflow: hidden;
   }
-  .story-highlight p {
+  .founder-manifesto::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle at top right, rgba(74,111,165,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .founder-manifesto p {
     font-family: var(--serif);
-    font-size: 1.35rem;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     font-weight: 300;
     font-style: italic;
-    line-height: 1.65;
-    color: var(--slate);
+    line-height: 1.7;
+    color: rgba(250,250,248,0.92);
     margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .founder-manifesto-label {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--steel-lt);
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 0.9rem;
   }
 
   /* Projects */
@@ -413,56 +409,6 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--steel-lt);
-  }
-
-  /* Expertise */
-  .expertise {
-    padding: 7rem 4rem;
-    background: var(--white);
-  }
-  .expertise-inner { max-width: 1320px; margin: 0 auto; }
-  .expertise h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.6rem, 3vw, 3rem);
-    font-weight: 300;
-    color: var(--ink);
-    margin-bottom: 0.8rem;
-  }
-  .expertise h2 em { font-style: italic; color: var(--steel); }
-  .expertise-intro {
-    font-size: 0.8rem;
-    line-height: 2;
-    color: var(--smoke);
-    max-width: 480px;
-    margin-bottom: 3rem;
-  }
-  .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(43,58,74,0.1);
-    border: 1px solid rgba(43,58,74,0.1);
-  }
-  .expertise-item {
-    background: var(--white);
-    padding: 2rem 1.8rem;
-    transition: background 0.3s;
-  }
-  .expertise-item:hover { background: var(--paper); }
-  .expertise-item span {
-    display: block;
-    font-size: 0.55rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--steel);
-    margin-bottom: 0.6rem;
-  }
-  .expertise-item strong {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.3;
   }
 
   /* CTA */
@@ -581,24 +527,15 @@
     .page-hero h1 { font-size: clamp(2.6rem, 11vw, 4rem); }
     .founder-intro-text .section-title,
     .projects-header h2,
-    .expertise h2,
     .about-cta h2 { font-size: clamp(2.3rem, 10vw, 3.6rem); }
     .founder-intro { padding: 4rem 1.5rem; }
     .founder-intro-inner { grid-template-columns: 1fr; gap: 3rem; }
     .founder-portrait { max-width: 320px; margin: 0 auto; }
     .founder-portrait-frame { min-height: 0; aspect-ratio: 3 / 4; }
-    .story { padding: 4rem 1.5rem; }
-    .story-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .story-aside { order: -1; position: static; }
-    .story-content { gap: 2.5rem; }
-    .story-visual { max-width: 360px; margin: 0 auto 1rem; }
-    .story-visual img { height: auto; min-height: 0; aspect-ratio: 4 / 5; box-shadow: 20px 20px 0 var(--linen); }
-    .story-visual-label { left: 0.5rem; }
+    .founder-manifesto { padding: 1.8rem 1.6rem; }
     .projects { padding: 4rem 1.5rem; }
     .projects-list { grid-template-columns: 1fr; }
     .project-item { border-right: none; border-bottom: 1px solid rgba(184,191,200,0.12); }
-    .expertise { padding: 4rem 1.5rem; }
-    .expertise-grid { grid-template-columns: 1fr 1fr; }
     .about-cta { padding: 4rem 1.5rem; }
     footer { padding: 3.5rem 1.5rem 2rem; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -608,9 +545,7 @@
     .page-hero h1 { font-size: clamp(2.2rem, 12vw, 3rem); line-height: 1; }
     .founder-intro-text .section-title,
     .projects-header h2,
-    .expertise h2,
     .about-cta h2 { font-size: clamp(1.95rem, 11vw, 2.7rem); }
-    .expertise-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
   }
 </style>
@@ -663,40 +598,24 @@
         <span>The Founder</span>
       </div>
       <h2 class="section-title reveal reveal-delay-1">Giorgos <em>Damianakis</em></h2>
-      <p class="founder-role reveal reveal-delay-2">Signature Hospitality Management</p>
-      <p class="reveal reveal-delay-2">My name is Giorgos Damianakis. My connection with entrepreneurship and creation began at a very young age — through production units and family businesses in the food sector.</p>
-      <p class="reveal reveal-delay-3">I studied Food Technology at the Agricultural University of Athens. Yet it was tourism — not food science alone — that truly captured me.</p>
-      <p class="reveal reveal-delay-3">Engaging with hospitality at a young age showed me how deeply I love creating experiences, developing hospitality concepts, and connecting with people from around the world.</p>
-    </div>
-  </div>
-</section>
+      <p class="founder-role reveal reveal-delay-2">Founder · Hospitality Management</p>
 
-<section class="story">
-  <div class="story-inner">
-    <div class="story-content">
-      <div class="story-block reveal">
-        <h3>From food science to guest experiences</h3>
-        <p>That passion led me to continue my studies in Business Administration, completing a Master's in Hospitality and Tourism at the Hellenic Mediterranean University of Crete.</p>
+      <p class="founder-lead reveal reveal-delay-2">GD Signature was built from real-world experience developing and managing boutique hotels, villas, and luxury accommodations in Crete.</p>
+
+      <p class="reveal reveal-delay-2">Through Volta Suites &amp; Villas, Volta Seaside Boutique Hotel, and Rodo Seafront Villa, I gained hands-on experience at every stage of hospitality: bookings, pricing, OTA management, direct bookings, guest experience, and commercial growth.</p>
+
+      <div class="founder-education reveal reveal-delay-3">
+        <strong>Education</strong>
+        <p>This experience is complemented by studies in Business Administration and a Master's degree in Hospitality and Tourism at the Hellenic Mediterranean University of Crete.</p>
       </div>
-      <div class="story-block reveal reveal-delay-1">
-        <h3>Building projects, building expertise</h3>
-        <p>Through creating and developing my own projects — Volta Suites &amp; Villas, Volta Seaside Boutique Hotel, and Rodo Seafront Villa — I gained hands-on experience across every layer of boutique hospitality.</p>
-        <p>That journey shaped how I think about properties: not as assets alone, but as living brands with a soul, a rhythm, and a guest journey worth refining.</p>
-      </div>
-      <div class="story-block reveal reveal-delay-2">
-        <h3>Why GD Signature exists</h3>
-        <p>GD Signature Hospitality Management was born from a simple desire: to share this knowledge and experience with fellow owners who want to evolve their property in a meaningful way — and benefit from it — without dedicating endless hours to the operational weight themselves.</p>
-      </div>
-      <blockquote class="story-highlight reveal reveal-delay-3">
-        <p>We help owners elevate their properties with strategy, soul, and operational clarity — so hospitality feels intentional again, not overwhelming.</p>
+
+      <p class="reveal reveal-delay-3">Every partnership is treated like my own property — with personal oversight, attention to detail, and a focus on more bookings, high ratings, a strong brand, and long-term profitability.</p>
+
+      <blockquote class="founder-manifesto reveal reveal-delay-3">
+        <span class="founder-manifesto-label">Our approach</span>
+        <p>We don't operate as a faceless management company. GD Signature was founded to offer select owners the same strategy and commercial approach I apply daily to my own projects.</p>
       </blockquote>
     </div>
-    <aside class="story-aside reveal reveal-delay-1" aria-label="Hospitality imagery">
-      <div class="story-visual">
-        <span class="story-visual-label">Boutique hospitality</span>
-        <img src="https://www.thehotel.gr/files/527/exterior-pool-1new.jpg" alt="Seaside boutique hotel and pool — hospitality atmosphere">
-      </div>
-    </aside>
   </div>
 </section>
 
@@ -721,21 +640,6 @@
       <h3 class="project-name">Rodo Seafront Villa</h3>
       <p class="project-type">Luxury villa</p>
     </article>
-  </div>
-</section>
-
-<section class="expertise">
-  <div class="expertise-inner">
-    <h2 class="reveal">Experience across the <em>full journey</em></h2>
-    <p class="expertise-intro reveal reveal-delay-1">Through these projects, I built practical expertise in the areas that matter most to owners who want boutique quality with commercial clarity.</p>
-    <div class="expertise-grid">
-      <div class="expertise-item reveal"><span>01</span><strong>Strategic development of accommodations</strong></div>
-      <div class="expertise-item reveal reveal-delay-1"><span>02</span><strong>Guest experience design</strong></div>
-      <div class="expertise-item reveal reveal-delay-2"><span>03</span><strong>Branding &amp; positioning</strong></div>
-      <div class="expertise-item reveal"><span>04</span><strong>Direct bookings strategy</strong></div>
-      <div class="expertise-item reveal reveal-delay-1"><span>05</span><strong>Boutique hospitality operations</strong></div>
-      <div class="expertise-item reveal reveal-delay-2"><span>06</span><strong>End-to-end hospitality experience</strong></div>
-    </div>
   </div>
 </section>
 

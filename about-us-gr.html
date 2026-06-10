@@ -196,7 +196,7 @@
 
   /* Founder intro */
   .founder-intro {
-    padding: 6rem 4rem;
+    padding: 6rem 4rem 7rem;
     background: var(--white);
   }
   .founder-intro-inner {
@@ -269,85 +269,81 @@
   }
   .founder-intro-text .section-label-line { background: var(--steel); }
   .founder-intro-text .section-label span { color: var(--steel); }
-
-  /* Story */
-  .story {
-    padding: 5rem 4rem 7rem;
-    background: var(--paper);
-    position: relative;
-  }
-  .story-inner {
-    max-width: 1320px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr minmax(400px, 44%);
-    gap: 4rem 5rem;
-    align-items: start;
-  }
-  .story-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-  }
-  .story-aside {
-    position: sticky;
-    top: 6.5rem;
-    align-self: start;
-  }
-  .story-block h3 {
+  .founder-lead {
     font-family: var(--serif);
-    font-size: 1.6rem;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
     font-weight: 300;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--slate);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(43,58,74,0.1);
   }
-  .story-block p {
-    font-size: 0.9rem;
-    line-height: 2;
-    color: var(--smoke);
-    margin-bottom: 1.2rem;
-  }
-  .story-block p:last-child { margin-bottom: 0; }
-  .story-visual {
+  .founder-education {
     position: relative;
-    height: 100%;
+    padding: 1.6rem 1.8rem 1.6rem 2.2rem;
+    background: var(--porcelain);
+    margin-bottom: 1.8rem;
   }
-  .story-visual img {
-    width: 100%;
-    height: min(78vh, 680px);
-    min-height: 520px;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border: 1px solid rgba(43,58,74,0.08);
-    box-shadow: 28px 28px 0 var(--linen);
-  }
-  .story-visual-label {
+  .founder-education::before {
+    content: '';
     position: absolute;
-    top: 1.2rem; left: -1.2rem;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-size: 0.48rem;
-    letter-spacing: 0.35em;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--steel) 0%, var(--steel-lt) 100%);
+  }
+  .founder-education p {
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: var(--slate);
+    margin: 0;
+  }
+  .founder-education strong {
+    display: block;
+    font-size: 0.5rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--steel);
     font-weight: 500;
+    margin-bottom: 0.5rem;
   }
-  .story-highlight {
-    padding: 2.5rem 3rem;
-    background: var(--white);
-    border-left: 3px solid var(--steel);
+  .founder-manifesto {
+    position: relative;
+    padding: 2.2rem 2.4rem;
+    background: var(--ink);
     margin-top: 0.5rem;
+    overflow: hidden;
   }
-  .story-highlight p {
+  .founder-manifesto::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle at top right, rgba(74,111,165,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .founder-manifesto p {
     font-family: var(--serif);
-    font-size: 1.35rem;
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     font-weight: 300;
     font-style: italic;
-    line-height: 1.65;
-    color: var(--slate);
+    line-height: 1.7;
+    color: rgba(250,250,248,0.92);
     margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .founder-manifesto-label {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--steel-lt);
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 0.9rem;
   }
 
   /* Projects */
@@ -414,56 +410,6 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--steel-lt);
-  }
-
-  /* Expertise */
-  .expertise {
-    padding: 7rem 4rem;
-    background: var(--white);
-  }
-  .expertise-inner { max-width: 1320px; margin: 0 auto; }
-  .expertise h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.6rem, 3vw, 3rem);
-    font-weight: 300;
-    color: var(--ink);
-    margin-bottom: 0.8rem;
-  }
-  .expertise h2 em { font-style: italic; color: var(--steel); }
-  .expertise-intro {
-    font-size: 0.8rem;
-    line-height: 2;
-    color: var(--smoke);
-    max-width: 480px;
-    margin-bottom: 3rem;
-  }
-  .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(43,58,74,0.1);
-    border: 1px solid rgba(43,58,74,0.1);
-  }
-  .expertise-item {
-    background: var(--white);
-    padding: 2rem 1.8rem;
-    transition: background 0.3s;
-  }
-  .expertise-item:hover { background: var(--paper); }
-  .expertise-item span {
-    display: block;
-    font-size: 0.55rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--steel);
-    margin-bottom: 0.6rem;
-  }
-  .expertise-item strong {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.3;
   }
 
   /* CTA */
@@ -582,24 +528,15 @@
     .page-hero h1 { font-size: clamp(2.6rem, 11vw, 4rem); }
     .founder-intro-text .section-title,
     .projects-header h2,
-    .expertise h2,
     .about-cta h2 { font-size: clamp(2.3rem, 10vw, 3.6rem); }
     .founder-intro { padding: 4rem 1.5rem; }
     .founder-intro-inner { grid-template-columns: 1fr; gap: 3rem; }
     .founder-portrait { max-width: 320px; margin: 0 auto; }
     .founder-portrait-frame { min-height: 0; aspect-ratio: 3 / 4; }
-    .story { padding: 4rem 1.5rem; }
-    .story-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .story-aside { order: -1; position: static; }
-    .story-content { gap: 2.5rem; }
-    .story-visual { max-width: 360px; margin: 0 auto 1rem; }
-    .story-visual img { height: auto; min-height: 0; aspect-ratio: 4 / 5; box-shadow: 20px 20px 0 var(--linen); }
-    .story-visual-label { left: 0.5rem; }
+    .founder-manifesto { padding: 1.8rem 1.6rem; }
     .projects { padding: 4rem 1.5rem; }
     .projects-list { grid-template-columns: 1fr; }
     .project-item { border-right: none; border-bottom: 1px solid rgba(184,191,200,0.12); }
-    .expertise { padding: 4rem 1.5rem; }
-    .expertise-grid { grid-template-columns: 1fr 1fr; }
     .about-cta { padding: 4rem 1.5rem; }
     footer { padding: 3.5rem 1.5rem 2rem; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -609,9 +546,7 @@
     .page-hero h1 { font-size: clamp(2.2rem, 12vw, 3rem); line-height: 1; }
     .founder-intro-text .section-title,
     .projects-header h2,
-    .expertise h2,
     .about-cta h2 { font-size: clamp(1.95rem, 11vw, 2.7rem); }
-    .expertise-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
   }
 </style>
@@ -664,40 +599,24 @@
         <span>Ο Ιδρυτής</span>
       </div>
       <h2 class="section-title reveal reveal-delay-1">Γιώργος <em>Δαμιανάκης</em></h2>
-      <p class="founder-role reveal reveal-delay-2">Ιδρυτής · Διαχείριση Boutique Φιλοξενίας</p>
-      <p class="reveal reveal-delay-2">Είμαι ο Γιώργος Δαμιανάκης, ιδρυτής της GD Signature Hospitality Management. Η επιχειρηματική μου πορεία ξεκίνησε νωρίς, μέσα από μονάδες παραγωγής και οικογενειακές επιχειρήσεις στον κλάδο των τροφίμων — εμπειρία που με εξοπλίζει ακόμη στη στρατηγική διαχείριση καταλυμάτων.</p>
-      <p class="reveal reveal-delay-3">Σπούδασα Τεχνολογία Τροφίμων στο Γεωπονικό Πανεπιστήμιο Αθηνών. Όμως ο τουρισμός και η φιλοξενία — όχι μόνο η επιστήμη των τροφίμων — με κράτησαν με συνέπεια στον επαγγελματικό προσανατολισμό μου.</p>
-      <p class="reveal reveal-delay-3">Η ενασχόλησή μου με boutique ξενοδοχεία και luxury διαμονές από νεαρή ηλικία επιβεβαίωσε το πάθος μου: να σχεδιάζω εμπειρίες επισκεπτών, να αναπτύσσω ολοκληρωμένες προτάσεις φιλοξενίας και να συνδέω καταλύματα με ταξιδιώτες από όλο τον κόσμο.</p>
-    </div>
-  </div>
-</section>
+      <p class="founder-role reveal reveal-delay-2">Ιδρυτής · Hospitality Management</p>
 
-<section class="story">
-  <div class="story-inner">
-    <div class="story-content">
-      <div class="story-block reveal">
-        <h3>Από την επιστήμη τροφίμων στη διαχείριση φιλοξενίας</h3>
-        <p>Αυτό το πάθος με οδήγησε στη Διοίκηση Επιχειρήσεων και σε μεταπτυχιακές σπουδές στη Φιλοξενία και τον Τουρισμό στο Ελληνικό Μεσογειακό Πανεπιστήμιο Κρήτης — θεμελιώνοντας την εξειδίκευσή μου στη διαχείριση boutique καταλυμάτων και στην εμπειρία επισκέπτη.</p>
+      <p class="founder-lead reveal reveal-delay-2">Η GD Signature δημιουργήθηκε μέσα από την πραγματική εμπειρία ανάπτυξης και διαχείρισης boutique ξενοδοχείων, villas και luxury καταλυμάτων στην Κρήτη.</p>
+
+      <p class="reveal reveal-delay-2">Μέσα από τα Volta Suites &amp; Villas, Volta Seaside Boutique Hotel και Rodo Seafront Villa, απέκτησα πρακτική εμπειρία σε κάθε στάδιο της φιλοξενίας: κρατήσεις, τιμολόγηση, OTA management, direct bookings, εμπειρία επισκέπτη και εμπορική ανάπτυξη.</p>
+
+      <div class="founder-education reveal reveal-delay-3">
+        <strong>Εκπαίδευση</strong>
+        <p>Η εμπειρία αυτή συμπληρώνεται από σπουδές στη Διοίκηση Επιχειρήσεων και μεταπτυχιακές σπουδές στη Φιλοξενία και τον Τουρισμό στο Ελληνικό Μεσογειακό Πανεπιστήμιο Κρήτης.</p>
       </div>
-      <div class="story-block reveal reveal-delay-1">
-        <h3>Έργα boutique φιλοξενίας που χτίζουν εμπειρία</h3>
-        <p>Με τη δημιουργία και την ανάπτυξη δικών μου καταλυμάτων — Volta Suites &amp; Villas, Volta Seaside Boutique Hotel και Rodo Seafront Villa — απέκτησα πρακτική εμπειρία σε κάθε επίπεδο διαχείρισης boutique ξενοδοχείων, villas και luxury διαμονών.</p>
-        <p>Αυτή η πορεία διαμόρφωσε την προσέγγισή μου: τα καταλύματα δεν είναι μόνο επένδυση, αλλά ζωντανά brands με ψυχή, λειτουργικό ρυθμό και διαδρομή επισκέπτη που βελτιώνεται συνεχώς.</p>
-      </div>
-      <div class="story-block reveal reveal-delay-2">
-        <h3>Γιατί δημιουργήθηκε η GD Signature</h3>
-        <p>Η GD Signature Hospitality Management ιδρύθηκε για να μεταφέρει αυτή τη γνώση σε ιδιοκτήτες boutique ξενοδοχείων και luxury καταλυμάτων που θέλουν ουσιαστική ανάπτυξη — με στρατηγική, branding και λειτουργική διαχείριση — χωρίς να επιβαρύνονται με το καθημερινό operational βάρος.</p>
-      </div>
-      <blockquote class="story-highlight reveal reveal-delay-3">
-        <p>Βοηθάμε ιδιοκτήτες ξενοδοχείων και villas να αναβαθμίσουν τα καταλύματά τους με στρατηγική ανάπτυξη, branding και λειτουργική σαφήνεια — ώστε η διαχείριση φιλοξενίας να γίνει ξανά σκόπιμη, όχι κατακλυτική.</p>
+
+      <p class="reveal reveal-delay-3">Κάθε συνεργασία αντιμετωπίζεται σαν δικό μου κατάλυμα, με προσωπική παρακολούθηση, προσοχή στη λεπτομέρεια και στόχο περισσότερες κρατήσεις, υψηλές αξιολογήσεις, ισχυρό brand και μακροχρόνια κερδοφορία.</p>
+
+      <blockquote class="founder-manifesto reveal reveal-delay-3">
+        <span class="founder-manifesto-label">Η προσέγγισή μας</span>
+        <p>Δεν λειτουργούμε ως απρόσωπη εταιρεία διαχείρισης. Η GD Signature ιδρύθηκε για να προσφέρει σε επιλεγμένους ιδιοκτήτες την ίδια στρατηγική και εμπορική προσέγγιση που εφαρμόζω καθημερινά στα δικά μου projects.</p>
       </blockquote>
     </div>
-    <aside class="story-aside reveal reveal-delay-1" aria-label="Εικόνες φιλοξενίας">
-      <div class="story-visual">
-        <span class="story-visual-label">Boutique φιλοξενία</span>
-        <img src="https://www.thehotel.gr/files/527/exterior-pool-1new.jpg" alt="Boutique ξενοδοχείο δίπλα στη θάλασσα και πισίνα — ατμόσφαιρα φιλοξενίας">
-      </div>
-    </aside>
   </div>
 </section>
 
@@ -722,21 +641,6 @@
       <h3 class="project-name">Rodo Seafront Villa</h3>
       <p class="project-type">Πολυτελές villa</p>
     </article>
-  </div>
-</section>
-
-<section class="expertise">
-  <div class="expertise-inner">
-    <h2 class="reveal">Εμπειρία σε όλη τη <em>διαδρομή διαχείρισης</em></h2>
-    <p class="expertise-intro reveal reveal-delay-1">Μέσα από αυτά τα boutique καταλύματα, απέκτησα πρακτική εμπειρία στους τομείς που μετράνε περισσότερο για ιδιοκτήτες που θέλουν premium φιλοξενία με εμπορική σαφήνεια και μετρήσιμα αποτελέσματα.</p>
-    <div class="expertise-grid">
-      <div class="expertise-item reveal"><span>01</span><strong>Στρατηγική ανάπτυξη boutique καταλυμάτων</strong></div>
-      <div class="expertise-item reveal reveal-delay-1"><span>02</span><strong>Σχεδιασμός εμπειρίας επισκέπτη (guest experience)</strong></div>
-      <div class="expertise-item reveal reveal-delay-2"><span>03</span><strong>Branding &amp; τοποθέτηση ξενοδοχείου</strong></div>
-      <div class="expertise-item reveal"><span>04</span><strong>Στρατηγική απευθείας κρατήσεων</strong></div>
-      <div class="expertise-item reveal reveal-delay-1"><span>05</span><strong>Λειτουργική διαχείριση boutique φιλοξενίας</strong></div>
-      <div class="expertise-item reveal reveal-delay-2"><span>06</span><strong>Ολοκληρωμένη διαχείριση φιλοξενίας</strong></div>
-    </div>
   </div>
 </section>
 
