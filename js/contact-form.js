@@ -4,17 +4,17 @@
       sending: 'Αποστολή…',
       success: 'Το μήνυμα εστάλη ✓',
       error: 'Σφάλμα αποστολής. Δοκιμάστε ξανά.',
-      notConfigured: 'Η φόρμα δεν έχει ρυθμιστεί ακόμα. Επικοινωνήστε απευθείας στο info@gdsignature.com',
+      notConfigured: 'Η φόρμα δεν έχει ρυθμιστεί ακόμα. Επικοινωνήστε απευθείας στο info@gdsignaturehospitality.com',
       captchaRequired: 'Επιβεβαιώστε ότι δεν είστε ρομπότ.',
-      captchaNotConfigured: 'Το reCAPTCHA δεν έχει ρυθμιστεί. Επικοινωνήστε απευθείας στο info@gdsignature.com',
+      captchaNotConfigured: 'Το reCAPTCHA δεν έχει ρυθμιστεί. Επικοινωνήστε απευθείας στο info@gdsignaturehospitality.com',
     },
     en: {
       sending: 'Sending…',
       success: 'Message Sent ✓',
       error: 'Failed to send. Please try again.',
-      notConfigured: 'The form is not configured yet. Please email info@gdsignature.com directly.',
+      notConfigured: 'The form is not configured yet. Please email info@gdsignaturehospitality.com directly.',
       captchaRequired: 'Please complete the reCAPTCHA verification.',
-      captchaNotConfigured: 'reCAPTCHA is not configured. Please email info@gdsignature.com directly.',
+      captchaNotConfigured: 'reCAPTCHA is not configured. Please email info@gdsignaturehospitality.com directly.',
     },
   };
 
