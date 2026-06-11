@@ -456,9 +456,9 @@
   }
   .service-item {
     display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 3rem;
-    align-items: center;
+    grid-template-columns: 52px 1fr;
+    gap: 2.5rem;
+    align-items: start;
     padding: 3.5rem 0;
     border-bottom: 1px solid rgba(43,58,74,0.08);
     scroll-margin-top: 6rem;
@@ -466,69 +466,21 @@
   .service-item:first-child { padding-top: 1rem; }
   .service-item:last-child { border-bottom: none; padding-bottom: 0; }
   .service-item--reverse {
-    grid-template-columns: 1fr 160px;
+    grid-template-columns: 1fr 52px;
   }
-  .service-item--reverse .service-thumb-wrap { order: 2; }
+  .service-item--reverse .service-icon-wrap { order: 2; }
   .service-item--reverse .service-body { order: 1; text-align: right; }
-  .service-item--reverse .service-icon-wrap { margin-left: auto; }
-
-  .service-thumb-wrap {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    flex-shrink: 0;
-  }
-  .service-thumb-deco {
-    position: absolute;
-    inset: -10px;
-    border: 1px solid rgba(74,111,165,0.22);
-    transition: transform 0.5s var(--ease);
-    pointer-events: none;
-  }
-  .service-item--reverse .service-thumb-deco { inset: -10px -10px -10px 10px; }
-  .service-item:hover .service-thumb-deco { transform: translate(6px, 6px); }
-  .service-item--reverse:hover .service-thumb-deco { transform: translate(-6px, 6px); }
-
-  .service-thumb {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin: 0;
-    background: var(--porcelain);
-    border: 1px solid rgba(43,58,74,0.1);
-  }
-  .service-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: saturate(0.88) contrast(1.04);
-    transition: transform 0.7s var(--ease), filter 0.4s;
-  }
-  .service-item:hover .service-thumb img {
-    transform: scale(1.08);
-    filter: saturate(1) contrast(1.06);
-  }
-  .service-thumb-num {
-    position: absolute;
-    bottom: 0; left: 0;
-    background: var(--steel);
-    color: var(--white);
-    font-size: 0.48rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    font-weight: 500;
-    padding: 0.45rem 0.75rem;
-    line-height: 1;
-  }
 
   .service-icon-wrap {
-    width: 36px;
-    height: 36px;
+    width: 52px;
+    height: 52px;
     color: var(--steel);
-    margin-bottom: 1rem;
-    opacity: 0.75;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.4s var(--ease);
+  }
+  .service-item:hover .service-icon-wrap {
+    opacity: 1;
+    transform: scale(1.06);
   }
   .service-icon-wrap svg { width: 100%; height: 100%; }
 
@@ -692,15 +644,14 @@
     .services-catalog { padding: 0 1.5rem 5rem; }
     .service-item,
     .service-item--reverse {
-      grid-template-columns: 100px 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 40px 1fr;
+      gap: 1.25rem;
       padding: 2.5rem 0;
     }
-    .service-item--reverse .service-thumb-wrap { order: 0; }
+    .service-item--reverse .service-icon-wrap { order: 0; }
     .service-item--reverse .service-body { order: 0; text-align: left; }
-    .service-item--reverse .service-icon-wrap { margin-left: 0; }
     .service-item--reverse .service-body .service-desc { margin-left: 0; }
-    .service-thumb-wrap { width: 100px; height: 100px; }
+    .service-icon-wrap { width: 40px; height: 40px; }
     .services-cta { padding: 4rem 1.5rem; }
     footer { padding: 3.5rem 1.5rem 2rem; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
@@ -819,179 +770,116 @@
   <div class="services-catalog-inner">
 
     <article class="service-item reveal" id="strategy-development">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="https://holiwaysvillas.com/wp-content/uploads/2024/06/1-137-scaled.jpg" alt="Στρατηγική ανάπτυξη boutique ξενοδοχείου και villa — GD Signature">
-          <span class="service-thumb-num">01</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/>
             <circle cx="12" cy="12" r="10"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">Στρατηγική Ανάπτυξη Boutique Καταλυμάτων</h3>
         <p class="service-desc">Positioning, concept development και στρατηγική κατεύθυνση για boutique ξενοδοχεία, villas και luxury καταλύματα από το pre-opening μέχρι τη σταθερή ανάπτυξη στην αγορά.</p>
       </div>
     </article>
 
     <article class="service-item service-item--reverse reveal reveal-delay-1" id="ota-revenue">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&q=80" alt="Διαχείριση OTA και revenue management για luxury κατάλυμα">
-          <span class="service-thumb-num">02</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
             <polyline points="16 7 22 7 22 13"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">OTA &amp; Revenue Management</h3>
         <p class="service-desc">Διαχείριση Booking.com, Airbnb και λοιπών καναλιών, με δυναμική τιμολόγηση, βελτιστοποίηση καταχωρήσεων και στρατηγική εσόδων για υψηλότερη πληρότητα και καλύτερο καθαρό αποτέλεσμα.</p>
       </div>
     </article>
 
     <article class="service-item reveal reveal-delay-2" id="direct-booking">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="assets/gd_photos_compressed/VOLTAhome02722_F.jpg" alt="Στρατηγική απευθείας κρατήσεων για boutique ξενοδοχείο">
-          <span class="service-thumb-num">03</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1">
             <path d="M6 22h32M28 14l8 8-8 8"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">Στρατηγική Απευθείας Κρατήσεων (Direct Bookings)</h3>
         <p class="service-desc">Σχεδιάζουμε ένα βιώσιμο σύστημα απευθείας κρατήσεων που ενισχύει την κερδοφορία του καταλύματος, δημιουργεί πιστό πελατολόγιο και μειώνει την εξάρτηση από τρίτα κανάλια πώλησης, μειώνοντας τις ογκώδεις προμήθειες.</p>
       </div>
     </article>
 
     <article class="service-item service-item--reverse reveal reveal-delay-1" id="guest-experience">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="https://www.thehotel.gr/files/527/exterior-pool-1new.jpg" alt="Εμπειρία επισκέπτη σε boutique ξενοδοχείο με πισίνα">
-          <span class="service-thumb-num">04</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">Εμπειρία Φιλοξενίας &amp; Ικανοποίηση Επισκεπτών</h3>
         <p class="service-desc">Σχεδιάζουμε την εμπειρία φιλοξενίας και τις λειτουργικές διαδικασίες του καταλύματος, με στόχο υψηλότερες αξιολογήσεις, μεγαλύτερη ικανοποίηση επισκεπτών και περισσότερες επαναλαμβανόμενες κρατήσεις.</p>
       </div>
     </article>
 
     <article class="service-item reveal reveal-delay-2" id="branding">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80" alt="Branding και οπτική ταυτότητα boutique καταλύματος">
-          <span class="service-thumb-num">05</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
             <path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">Branding &amp; Online Παρουσία</h3>
         <p class="service-desc">Αναδεικνύουμε την ταυτότητα του καταλύματος μέσα από branding, storytelling και συνεπή παρουσία σε όλα τα σημεία επαφής με τον επισκέπτη, από την ιστοσελίδα έως τα κανάλια κρατήσεων.</p>
       </div>
     </article>
 
     <article class="service-item service-item--reverse reveal reveal-delay-3" id="pricing-strategy">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80" alt="Στρατηγική τιμολόγησης και revenue management ξενοδοχείου">
-          <span class="service-thumb-num">06</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 16v5"/><path d="M16 14v7"/><path d="M20 10v11"/>
             <path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"/>
             <path d="M4 18v3"/><path d="M8 14v7"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">Τιμολογιακή Στρατηγική &amp; Revenue Proposal</h3>
         <p class="service-desc">Σχεδιάζουμε τιμολογιακή στρατηγική με βάση ανταγωνισμό, εποχικότητα, ζήτηση και καθαρό έσοδο, με στόχο καλύτερη απόδοση για τον ιδιοκτήτη.</p>
       </div>
     </article>
 
     <article class="service-item reveal reveal-delay-1" id="photography">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80" alt="Επαγγελματική φωτογράφιση boutique ξενοδοχείου και villa">
-          <span class="service-thumb-num">07</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
             <circle cx="12" cy="13" r="3"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">Επαγγελματική Φωτογράφιση &amp; Οπτική Παρουσίαση</h3>
         <p class="service-desc">Η φωτογράφιση αποτελεί έναν από τους σημαντικότερους παράγοντες για την αύξηση των κρατήσεων και τη σωστή προβολή ενός καταλύματος. Μέσω εξειδικευμένων συνεργατών, μπορούμε να σας υποστηρίξουμε με επαγγελματική φωτογράφιση για Booking.com, Airbnb, ιστοσελίδα και social media, αναδεικνύοντας τα δυνατά σημεία του καταλύματός σας.</p>
       </div>
     </article>
 
     <article class="service-item service-item--reverse reveal reveal-delay-2" id="guest-support">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="assets/gd_photos_compressed/MATH_0024.jpg" alt="Υποστήριξη επισκεπτών 24/7 από ομάδα φιλοξενίας GD Signature">
-          <span class="service-thumb-num">08</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">Υποστήριξη Επισκεπτών 24/7</h3>
         <p class="service-desc">Συνεχής επικοινωνία με επισκέπτες πριν, κατά τη διάρκεια και μετά τη διαμονή, με στόχο άμεση εξυπηρέτηση, καλύτερες αξιολογήσεις και πιο ήρεμη διαχείριση για τον ιδιοκτήτη.</p>
       </div>
     </article>
 
     <article class="service-item reveal reveal-delay-3" id="website-development">
-      <div class="service-thumb-wrap">
-        <div class="service-thumb-deco" aria-hidden="true"></div>
-        <figure class="service-thumb">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="Ανάπτυξη ιστοσελίδας καταλύματος με απευθείας κρατήσεις">
-          <span class="service-thumb-num">09</span>
-        </figure>
-      </div>
-      <div class="service-body">
-        <div class="service-icon-wrap" aria-hidden="true">
+      <div class="service-icon-wrap" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/>
             <path d="M10 19v-3.96 3.15"/><path d="M7 19h5"/>
             <rect width="6" height="10" x="16" y="12" rx="2"/>
           </svg>
         </div>
+      <div class="service-body">
         <h3 class="service-name">Ιστοσελίδα &amp; Σύστημα Απευθείας Κρατήσεων</h3>
         <p class="service-desc">Δημιουργία SEO-friendly ιστοσελίδας με booking engine και σωστή δομή πωλήσεων, ώστε το κατάλυμα να αυξάνει τις απευθείας κρατήσεις και να μειώνει την εξάρτηση από OTA προμήθειες.</p>
       </div>
